@@ -1,0 +1,22 @@
+:host {
+  height: 500px;
+  display: inline;
+}
+
+.section {
+  display: block;
+  height: 500px;
+  margin-bottom: 10rem;
+}
+
+.container-fluid {
+  overflow: auto;
+  height: inherit;
+}
+
+.empty-box {
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+  margin: 20px;
+}

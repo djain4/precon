@@ -1,17 +1,9 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-  <ng-container *ngFor="let navItem of navItems; let i = index">
-    <li [ngbNavItem]="i" [routerLink]="navItem.route">
-      <a ngbNavLink>{{ navItem.title }}</a>
-      <ng-template ngbNavContent>
-        <p>
-          {{ navItem.content }}
-        </p>
-      </ng-template>
-    </li>
-  </ng-container>
-</ul>
-
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
-
-<pre>Active: {{ navItems.length }}</pre>
-<router-outlet></router-outlet>
+<ng-container>
+  <precon-header></precon-header>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  <div style="display: block">
+    <precon-footer></precon-footer>
+  </div>
+</ng-container>

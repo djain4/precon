@@ -1,1 +1,14 @@
-<p>header works!</p>
+<div>
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <ng-container *ngFor="let navItem of navItems; let i = index">
+      <li [ngbNavItem]="i" [routerLink]="navItem.route">
+        <a ngbNavLink>{{ navItem.title }}</a>
+        <!-- <ng-template ngbNavContent>
+            <p>
+              {{ navItem.content }}
+            </p>
+          </ng-template> -->
+      </li>
+    </ng-container>
+  </ul>
+</div>
