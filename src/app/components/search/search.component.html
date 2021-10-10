@@ -1,0 +1,13 @@
+<form class="example-form">
+    <section>
+        <mat-form-field>
+            <mat-label>City Browser</mat-label>
+            <input matInput (focus)="onFocusEvent($event)">
+            <!-- <input matInput (focus)="onFocusEvent($event)" (focusout)="onFocusOutEvent($event)"> -->
+        </mat-form-field>
+        <button mat-raised-button color="black">Search</button>
+    </section>
+    <div *ngIf="isShown" class="row container-fluid" id="divshow">
+        <precon-flex [customTitle]="cities"></precon-flex>
+    </div>
+</form>
