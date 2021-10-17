@@ -1,0 +1,24 @@
+{
+  "cities": [
+    "Toronto",
+    "Mississauga",
+    "Brampton",
+    "Oakville",
+    "Milton",
+    "Hamilton"
+  ],
+  "reasonsList": [
+    {
+      "header": "Header 1",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, seddiam nonummy nibh euismodtincidunt ut laoreet dolore"
+    },
+    {
+      "header": "Header 2",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, seddiam nonummy nibh euismodtincidunt ut laoreet dolore"
+    },
+    {
+      "header": "Header 3",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, seddiam nonummy nibh euismodtincidunt ut laoreet dolore"
+    }
+  ]
+}

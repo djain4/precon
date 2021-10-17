@@ -3,10 +3,43 @@
   display: inline;
 }
 
+.center-text {
+  text-align: center;
+}
+
 .section {
   display: block;
   height: 500px;
   margin-bottom: 10rem;
+  h1 {
+    text-align: center;
+    font-size: 4em;
+    padding-bottom: 2em;
+  }
+  h2 {
+    font-size: 3em;
+    padding-bottom: 2em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+}
+
+.sub-header {
+  font-size: 1.5em;
+  padding-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.precon-search {
+  text-align: center;
+  padding-bottom: 50px;
+  display: block;
+}
+
+.description {
+  text-align: center;
 }
 
 .container-fluid {
@@ -19,4 +52,25 @@
   height: 150px;
   border: 1px solid;
   margin: 20px;
+}
+
+@import "~@angular/material/theming";
+
+.img {
+  width: 100%;
+  margin-bottom: 10%;
+}
+.container {
+  // min-height: 10%;
+  // max-height: 20%;
+  max-height: 250px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.clickable {
+  cursor: pointer;
+  &:hover {
+    @include mat-elevation(8);
+  }
 }
