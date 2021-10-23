@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'precon-header',
@@ -9,7 +10,7 @@ export class HeaderComponent implements OnInit {
   active = 0;
   navItems: any = [];
 
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {
     this.navItems = [
@@ -22,5 +23,10 @@ export class HeaderComponent implements OnInit {
         route: '/pre-construction',
       },
     ];
+
+    //This is to set the active tab on page refresh
+    this.active = this.navItems.findIndex(
+      (item: any) => item.route === this._router.url
+    );
   }
 }

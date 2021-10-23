@@ -11,6 +11,7 @@ export class ApiService {
     const headers = {
       'Content-Type': 'application/json;charset=utf-8',
       Accept: 'application/json, text/plain, */*',
+      responseType: 'text'
     };
 
     const httpHeaders = new HttpHeaders(headers);
@@ -18,6 +19,15 @@ export class ApiService {
     return this.httpClient
       .get<T>(reqParams.url, {
         headers: httpHeaders,
+      })
+      .pipe(finalize(() => {}));
+  }
+
+  getDataCSV<T>(reqParams: any): Observable<any> {
+
+    return this.httpClient
+      .get(reqParams.url, {
+        responseType: 'text'
       })
       .pipe(finalize(() => {}));
   }
