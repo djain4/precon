@@ -17,7 +17,11 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onFocusEvent(event: any){
+  // onFocusEvent(event: any){
+  //   this.isShown = ! this.isShown;
+  // }
+
+  toggleDiv(){
     this.isShown = ! this.isShown;
   }
 
