@@ -14,3 +14,20 @@
   height: 30px;
   text-align: center;
 }
+
+label {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  display:inline-block;
+  vertical-align:top;
+  width: 20%;
+  text-align: center;
+  align-items: center;
+}
+
+.button {
+  width: 50%;
+  text-align: center;
+  align-items: center;
+}
