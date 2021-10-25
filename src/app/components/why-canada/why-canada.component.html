@@ -1,1 +1,70 @@
-<p>why-canada works!</p>
+<div>
+    <div class="m-tb-20">
+        <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/LTLE4QGRVQ.jpg" />
+    </div>
+</div>
+
+<div class="project_container m-tb-20" *ngFor="let i of [1, 2, 3, 4, 5]">
+    <div class="row p-3">
+        <div *ngIf="i%2 != 0;then content else other_content">
+        </div>
+        <ng-template #content>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col m-b-10">
+                        <h4>Reason Number {{i}}</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="float: right">
+                        <button>Click Here</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="m-tb-20">
+                    <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg"
+                        alt="Project Image" />
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #other_content>
+            <div class="col-sm-4">
+                <div class="m-tb-20">
+                    <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg"
+                        alt="Project Image" />
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col m-b-10">
+                        <h4>Reason Number {{i}}</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="float: right">
+                        <button>Click Here</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
