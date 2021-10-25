@@ -1,11 +1,11 @@
 <form class="example-form">
   <section>
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-label>City Browser</mat-label>
       <input matInput (focus)="onFocusEvent($event)" />
-      <!-- <input matInput (focus)="onFocusEvent($event)" (focusout)="onFocusOutEvent($event)"> -->
-    </mat-form-field>
-    <button mat-raised-button color="black">Search</button>
+    </mat-form-field> -->
+    <button type="button" (click)="toggleDiv()" mat-raised-button color="white" class="button">City Browser</button>
+    <label color="white" background-color="black">Search</label>
   </section>
   <div *ngIf="isShown" class="row container-fluid" id="divshow">
     <precon-flex [customTitle]="cities"></precon-flex>
