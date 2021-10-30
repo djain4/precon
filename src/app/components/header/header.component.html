@@ -11,7 +11,11 @@
         [routerLink]="navItem.route"
         [routerLinkActive]="['active']"
       >
+        <div class="l-left"></div>
+        <div class="l-right"></div>
         <a ngbNavLink>{{ navItem.title }}</a>
+        <div class="r-left"></div>
+        <div class="r-right"></div>
       </li>
     </ng-container>
   </ul>

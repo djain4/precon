@@ -12,10 +12,100 @@
   padding: 0px 3% !important;
 }
 
+.nav-item {
+  .l-left {
+    width: 10px;
+    height: 3rem;
+    background: white;
+    border-radius: 0 0 25px;
+    content: "";
+    position: absolute;
+    float: left;
+    display: block;
+  }
+
+  .l-right {
+    width: 10px;
+    height: 3rem;
+    background: white;
+    border-top-left-radius: 25px;
+    content: "";
+    position: absolute;
+    float: left;
+    margin-left: 10px;
+    border-left: 1px solid black;
+  }
+
+  .r-left {
+    width: 10px;
+    height: 3rem;
+    background: white;
+    border-top-right-radius: 25px;
+    float: left;
+    display: block;
+    border-right: 1px solid black;
+  }
+
+  .r-right {
+    width: 10px;
+    height: 3rem;
+    background: white;
+    border-bottom-left-radius: 25px;
+    float: left;
+    display: block;
+  }
+}
+
+.nav-item.active {
+  .l-left {
+    width: 10px;
+    height: 3rem;
+    background: white;
+    border-radius: 0 0 25px;
+    content: "";
+    position: absolute;
+    float: left;
+    display: block;
+  }
+
+  .l-right {
+    width: 10px;
+    height: 3rem;
+    background: black;
+    border-top-left-radius: 25px;
+    content: "";
+    position: absolute;
+    float: left;
+    margin-left: 10px;
+    border-left: 1px solid black;
+  }
+
+  .r-left {
+    width: 10px;
+    height: 3rem;
+    background: black;
+    border-top-right-radius: 25px;
+    float: left;
+    display: block;
+  }
+
+  .r-right {
+    width: 10px;
+    height: 3rem;
+    background: white;
+    border-bottom-left-radius: 25px;
+    float: left;
+    display: block;
+  }
+}
 .nav-link {
   color: black !important;
-  border-radius: 25px 25px 0px 0px;
+  // border-radius: 15px 15px 0px 0px;
   height: 3rem;
+  margin-left: 5px;
+  width: 90%;
+  float: left;
+  margin-right: -15px;
   &.active {
     background: black !important;
     color: white !important;
@@ -25,6 +115,6 @@
 .nav-link:hover,
 .nav-link:focus,
 .nav-link:active {
-  background: black !important;
-  color: white !important;
+  // background: black !important;
+  // color: white !important;
 }

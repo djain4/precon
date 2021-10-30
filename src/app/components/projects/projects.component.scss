@@ -38,3 +38,22 @@
     margin-bottom: 1em;
   }
 }
+
+#leafletId {
+  width: 50%;
+  // height: 500px;
+  display: block;
+}
+
+::ng-deep .leaflet-marker-icon img {
+  width: 20px !important;
+}
+
+::ng-deep .leaflet-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+::ng-deep .leaflet-marker-icon span {
+  font-weight: bold;
+}

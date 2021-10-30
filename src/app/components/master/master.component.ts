@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MasterComponent implements OnInit {
   title = 'precon-browser';
 
+  
   constructor() {}
 
   ngOnInit(): void {}

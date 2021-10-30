@@ -13,9 +13,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRippleModule } from '@angular/material/core';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 // Services
 import { ApiService } from './services/api.service';
+import { LeafletMapComponent } from './components/leaflet-map/leaflet-map.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ApiService } from './services/api.service';
     routingComponents,
     FlexComponent,
     SearchComponent,
+    LeafletMapComponent,
   ],
   imports: [
     HttpClientModule,
@@ -36,6 +39,7 @@ import { ApiService } from './services/api.service';
     MatFormFieldModule,
     MatRippleModule,
     MatCardModule,
+    LeafletModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

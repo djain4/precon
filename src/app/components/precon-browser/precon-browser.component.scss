@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.border-none {
+  border: none;
+}
+
 .section {
   display: block;
   height: 500px;
@@ -65,7 +69,7 @@
   // max-height: 20%;
   max-height: 250px;
   width: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .clickable {
@@ -85,4 +89,105 @@
   content: "";
   clear: both;
   display: table;
+}
+
+//variables for text animation
+$class-slug: animate;
+$total-element: 6;
+
+body {
+  font-family: Montserrat, sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  min-width: 320px;
+}
+
+.post-list {
+   animation: zoomInFade 15s linear 1s infinite forwards;
+
+   &:hover {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+   }
+}
+
+@keyframes slide {
+0% {
+  margin-left: 0px;
+}
+50% {
+  margin-left: -100px;
+}
+100% {
+  margin-left: -200px;
+}
+}
+
+// .animation-wrapper {
+//   text-align: center;
+//   height: 100vh;
+//   overflow: hidden;
+//   // background: #f55;
+//   position: relative;
+//   color: #212121;
+//   box-sizing: border-box;
+// }
+
+// .#{$class-slug} {
+//   display: inline-block;
+//   vertical-align: top;
+//   width: 100%;
+//   margin-bottom: 16px;
+//   position: absolute;
+//   top: 100%;
+//   left: 0;
+//   right: 0;
+//   animation: zoomInFade 3s linear 5s infinite forwards;
+// }
+
+// @for $i from 0 through $total-element {
+//   .#{$class-slug}-#{$i} {
+//     animation-delay: #{$i / 2 + 0.5}#{s};
+//   }
+// }
+
+@keyframes zoomInFade {
+  0% {
+    transform:translateY(20%);
+    opacity: 0.5;
+    top: 100%;
+    visibility: visible;
+  }
+  20% {
+    transform:translateY(0);
+    opacity: 1;
+    top: 50%;
+    visibility: visible;
+  }
+  40% {
+    transform:translateY(-20%);
+    opacity: 1;
+    top: 50%;
+    visibility: visible;
+  }
+  60% {
+    transform:translateY(-40%);
+    opacity: 1;
+    top: 25%;
+    visibility: visible;
+  }
+  80% {
+    transform:translateY(-60%);
+    opacity: 1;
+    top: 25%;
+    visibility: visible;
+  }
+  100% {
+    transform:translateY(-80%);
+    opacity: 0;
+    top: 0;
+    visibility: hidden;
+  }
 }
