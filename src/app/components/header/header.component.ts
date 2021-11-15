@@ -14,10 +14,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.navItems = [
-      { title: 'PRECONBROWSER', content: 'Content 1', route: '/home' },
-      { title: 'Projects', content: 'Content 2', route: '/projects' },
-      { title: 'Why CANADA', content: 'Content 3', route: '/why-canada' },
+      // { title: 'PRECONBROWSER', content: 'Content 1', route: '/home' },
+      { index: 1, title: 'Projects', content: 'Content 2', route: '/projects' },
+      { index: 2, title: 'Why CANADA', content: 'Content 3', route: '/why-canada' },
       {
+        index: 3, 
         title: 'Why PRE-CONSTRUCTION',
         content: 'Content 4',
         route: '/pre-construction',
@@ -25,8 +26,11 @@ export class HeaderComponent implements OnInit {
     ];
 
     //This is to set the active tab on page refresh
-    this.active = this.navItems.findIndex(
+    
+    let navItems = this.navItems.find(
       (item: any) => item.route === this._router.url
     );
+
+    this.active = navItems ? navItems.index : 0;
   }
 }

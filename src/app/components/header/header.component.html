@@ -5,9 +5,22 @@
     [(activeId)]="active"
     class="navbar fixed-top navbar-light bg-light nav-fill"
   >
+    <li
+      [ngbNavItem]="0"
+      [routerLink]="['home']"
+      [routerLinkActive]="['active']"
+    >
+      <div class="l-left"></div>
+      <div class="l-right"></div>
+      <a ngbNavLink>
+        <span style="font-weight: 600;">PRECON</span>
+        <span style="font-weight: 100;">BROWSER</span></a>
+      <div class="r-left"></div>
+      <div class="r-right"></div>
+    </li>
     <ng-container *ngFor="let navItem of navItems; let i = index">
       <li
-        [ngbNavItem]="i"
+        [ngbNavItem]="navItem.index"
         [routerLink]="navItem.route"
         [routerLinkActive]="['active']"
       >

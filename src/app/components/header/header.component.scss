@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 :host {
   display: flex;
   margin: 2%;
@@ -5,8 +7,9 @@
 
 .navbar {
   margin: auto 8%;
-  background: white !important;
+  background: $vlight-blue !important;
   border: 1px solid;
+  border-color: $light-blue;
   border-radius: 25px 25px 0px 0px;
   font-size: 1.5em;
   padding: 0px 3% !important;
@@ -16,7 +19,7 @@
   .l-left {
     width: 10px;
     height: 3rem;
-    background: white;
+    // background: white;
     border-radius: 0 0 25px;
     content: "";
     position: absolute;
@@ -27,29 +30,29 @@
   .l-right {
     width: 10px;
     height: 3rem;
-    background: white;
+    // background: white;
     border-top-left-radius: 25px;
     content: "";
     position: absolute;
     float: left;
     margin-left: 10px;
-    border-left: 1px solid black;
+    border-left: 1px solid $light-blue;
   }
 
   .r-left {
     width: 10px;
     height: 3rem;
-    background: white;
+    // background: white;
     border-top-right-radius: 25px;
     float: left;
     display: block;
-    border-right: 1px solid black;
+    border-right: 1px solid $light-blue;
   }
 
   .r-right {
     width: 10px;
     height: 3rem;
-    background: white;
+    // background: white;
     border-bottom-left-radius: 25px;
     float: left;
     display: block;
@@ -60,7 +63,7 @@
   .l-left {
     width: 10px;
     height: 3rem;
-    background: white;
+    // background: $dark-blue;
     border-radius: 0 0 25px;
     content: "";
     position: absolute;
@@ -71,19 +74,19 @@
   .l-right {
     width: 10px;
     height: 3rem;
-    background: black;
+    // background: $dark-blue;
     border-top-left-radius: 25px;
     content: "";
     position: absolute;
     float: left;
     margin-left: 10px;
-    border-left: 1px solid black;
+    border-left: 1px solid $light-blue;
   }
 
   .r-left {
     width: 10px;
     height: 3rem;
-    background: black;
+    background: $dark-blue;
     border-top-right-radius: 25px;
     float: left;
     display: block;
@@ -92,22 +95,25 @@
   .r-right {
     width: 10px;
     height: 3rem;
-    background: white;
+    // background: $dark-blue;
     border-bottom-left-radius: 25px;
     float: left;
     display: block;
   }
 }
+
 .nav-link {
-  color: black !important;
+  color: $dark-blue !important;
   // border-radius: 15px 15px 0px 0px;
   height: 3rem;
   margin-left: 5px;
   width: 90%;
   float: left;
   margin-right: -15px;
+  text-transform: uppercase;
+  font-weight: 500;
   &.active {
-    background: black !important;
+    background: $dark-blue !important;
     color: white !important;
   }
 }

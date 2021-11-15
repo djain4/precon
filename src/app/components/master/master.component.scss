@@ -1,7 +1,11 @@
+
+@import '../../../variables.scss';
+
 :host {
   // margin: 1rem;
   // padding: 1rem;
   display: block;
+  background-color: $base-color;
 }
 
 .container {

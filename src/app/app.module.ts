@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
+
 import { FlexComponent } from './components/flex/flex.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchComponent } from './components/search/search.component';
@@ -31,6 +34,7 @@ import { LeafletMapComponent } from './components/leaflet-map/leaflet-map.compon
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    NgxEchartsModule.forRoot({echarts}),
     NgbModule,
     FlexLayoutModule,
     MatButtonModule,

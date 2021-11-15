@@ -2,24 +2,92 @@
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+@import './variables.scss';
 
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: $light-blue;
+  line-height: 1.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $dark-blue;
+}
+
+.border-none {
+  border: none;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.card {
+  background-color: transparent;
+}
+
+.button {
+  background-color: $vlight-blue !important;
+  color: $dark-blue !important;
+  text-transform: uppercase !important;
+}
+
+.section {
+  display: block;
+  height: auto;
+  min-height: 500px;
+  margin-bottom: 10rem;
+  h1 {
+    text-align: center;
+    font-size: 4em;
+    // padding-bottom: 2em;
+  }
+  h2 {
+    font-size: 3em;
+    padding-bottom: 2em;
+  }
+  h3 {
+    font-size: 2em;
+    font-weight: 100;
+  }
+  h4{
+    font-size: 2em;
+    text-align: center;
+    font-weight: 400;
+  }
+  h5 {
+    margin: 2rem 10rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  h6 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.sub-header {
+  font-size: 1.5em;
+  padding-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
 button {
-  background-color: black;
+  background-color: $button-color;
   color: #fff;
   height: 30px;
   text-align: center;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
   box-sizing: border-box;
   position: relative;
@@ -29,5 +97,6 @@ button {
   padding: 0 16px;
   transform: translate3d(0, 0, 0);
   transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
-    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 12rem;
 }

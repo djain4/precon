@@ -1,18 +1,20 @@
-<section class="section">
-  <h6>PRE-CONSTRUCTION <span>WITH...</span></h6>
-  <h2>NEEL SURENDRAN & THE TEAM</h2>
+<section class="section" style="margin-top: 5rem">
+  <!-- <h6>PRE-CONSTRUCTION <span>WITH...</span></h6>
+  <h2>NEEL SURENDRAN & THE TEAM</h2> -->
   <div class="row h-100">
     <div class="col-sm-6">
       <div class="card border-none">
         <div class="card-body">
-          <div>
+          <h3>
+            Access The Latest
+            <br>Preconstruction
+            <br>Projects In CANADA
+          </h3>
+          <div style="margin: 0 0 1rem;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            aliquip ex ea commodo consequat. Duis aute irure dolor in.
           </div>
           <div>
             <button>Submit</button>
@@ -21,14 +23,6 @@
       </div>
     </div>
     <div class="col-sm-6 h-100">
-      <!-- <div class="animation-wrapper">
-        <span class="animate animate-1">Wakeup</span>
-        <span class="animate animate-2">Drink</span>
-        <span class="animate animate-3">Eat</span>
-        <span class="animate animate-4">Code</span>
-        <span class="animate animate-5">Sleep</span>
-        <span class="animate animate-6">Repeat!</span>
-      </div> -->
       <div class="container">
         <div class="post-list animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
           <div fxFlex="40%" *ngFor="let itemFiltered of imagesList; let i = index" class="animate animate-{{i}}">
@@ -108,7 +102,28 @@
   </div>
 </section>
 <section class="section">
+  <h1>FEATURED</h1>
+  <div>
+    <h5>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinciduntut laoreet dolore
+    </h5>
+  </div>
+  <div class="container">
+    <div class="post-list animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
+      <div fxFlex="30%" *ngFor="let itemFiltered of imagesList; let i = index" class="animate animate-{{i}}">
+        <div>
+          <img class="img" [src]="itemFiltered" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 2rem; text-align: center;">
+    <button>More</button>
+  </div>
+</section>
+<section class="section">
   <h1>PREFERRED LOCATION</h1>
+  <div echarts [options]="mapChartOption" class="demo-chart" (chartClick)="onChartEvent($event, 'chartClick')"></div>
   <precon-search class="precon-search"></precon-search>
   <h2 class="center-text">Reasons WHY CANADA</h2>
   <div>
@@ -116,7 +131,7 @@
       <div fxFlex="30%" *ngFor="let itemFiltered of reasonsList" style="padding-bottom: 2%">
         <div>
           <div class="sub-header">{{ itemFiltered.header }}</div>
-          <div class="description">{{ itemFiltered.description }}</div>
+          <div class="center-text">{{ itemFiltered.description }}</div>
         </div>
       </div>
     </div>
@@ -141,16 +156,17 @@
 </section>
 <section class="section">
   <h1>PREFERRED ROI</h1>
-</section>
-<section class="section">
-  <h1>FEATURED</h1>
-  <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left"
-    style="max-height: 500px !important">
-    <div fxFlex="30%" *ngFor="let itemFiltered of imagesList">
-      <div>
-        <img class="img" [src]="itemFiltered" />
-      </div>
-    </div>
+  <div>
+    <h4>
+      INVEST IN THE HIGHEST QUALITY OPPORTUNITIES
+    </h4>
+  </div>
+  <div>
+    <h5>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinciduntut laoreet dolore
+    </h5>
+  </div>
+  <div>
+    <div echarts [options]="chartOption" class="demo-chart"></div>
   </div>
 </section>
-<!--https://codepen.io/atled/pen/ajQZvg-->
