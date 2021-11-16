@@ -38,11 +38,45 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase !important;
 }
 
+.image-text-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.image-text-top-left {
+  position: absolute;
+  left: 5%;
+  top: 20%;
+  // transform: translate(-50%, -50%);
+  color: white;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.image-text-bottom-right {
+  position: absolute;
+  right: 5%;
+  bottom: 20%;
+  // transform: translate(-50%, -50%);
+  color: white;
+  font-weight: 100;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .section {
   display: block;
   height: auto;
   min-height: 500px;
   margin-bottom: 10rem;
+  padding: 0 1rem;
+  
   h1 {
     text-align: center;
     font-size: 4em;

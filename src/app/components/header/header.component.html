@@ -1,5 +1,26 @@
 <div>
-  <ul
+  <div class="navbar-curve">
+    <ul class="tabrow">
+	    <li [routerLink]="['home']" [routerLinkActive]="['selected']">
+        <a href="javascript:none">
+          <span style="font-weight: 600;">PRECON</span>
+          <span style="font-weight: 100;">BROWSER</span>
+        </a>
+      </li>
+	    <li [routerLink]="['projects']" [routerLinkActive]="['selected']"><a href="javascript:none">PROJECTS</a></li>
+	    <li [routerLink]="['why-canada']" [routerLinkActive]="['selected']"><a href="javascript:none">WHY CANADA</a></li>
+	    <li [routerLink]="['pre-construction']" [routerLinkActive]="['selected']"><a href="javascript:none">WHY PRE-CONSTRUCTION</a></li>
+      <!-- <ng-container *ngFor="let navItem of navItems; let i = index">
+        <li
+          [routerLink]="navItem.route"
+          [routerLinkActive]="['active']"
+        >
+          <a ngbNavLink>{{ navItem.title }}</a>
+        </li>
+      </ng-container> -->
+	</ul>
+  </div>
+  <!-- <ul
     ngbNav
     #nav="ngbNav"
     [(activeId)]="active"
@@ -31,5 +52,5 @@
         <div class="r-right"></div>
       </li>
     </ng-container>
-  </ul>
+  </ul> -->
 </div>

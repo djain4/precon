@@ -1,8 +1,8 @@
 @import '../../../variables.scss';
 
 :host {
-  display: flex;
-  margin: 2%;
+  // display: flex;
+  // margin: 2%;
 }
 
 .navbar {
@@ -123,4 +123,112 @@
 .nav-link:active {
   // background: black !important;
   // color: white !important;
+}
+
+
+
+
+.navbar-curve {
+  position: fixed;
+  z-index: 10;
+  * { margin: 0; padding: 0; }
+  body { font: 14px Georgia, serif; }
+
+  .tabrow {
+      text-align: center;
+      list-style: none;
+      // margin: 200px 0 20px;
+      padding: 0;
+      line-height: 2.4rem;
+      height: 2.5rem;
+      overflow: hidden;
+      font-size: 12px;
+      font-family: verdana;
+      position: relative;
+      text-transform: uppercase;
+      background: #FFF6EF;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      border: 1px solid #2D78DB;
+      z-index: 5;
+  }
+  .tabrow li {
+      background: $vlight-blue;
+      background: -o-linear-gradient(top, #ECECEC 50%, $vlight-blue 100%);
+      background: -ms-linear-gradient(top, #ECECEC 50%, $vlight-blue 100%);
+      background: -moz-linear-gradient(top, #ECECEC 50%, $vlight-blue 100%);
+      background: -webkit-linear-gradient(top, #ECECEC 50%, $vlight-blue 100%);
+      background: linear-gradient(top, #ECECEC 50%, $vlight-blue 100%);
+
+      border: 1px solid $light-blue;
+      display: inline-block;
+      position: relative;
+      z-index: 0;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      margin: 0 -5px;
+      padding: 0 60px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #0455BF;
+  }
+  .tabrow a {
+      color: $dark-blue;
+      text-decoration: none;
+      font-weight: bold;
+  }
+  .tabrow li.selected {
+      background: $dark-blue;
+      color: #fff;
+      z-index: 2;
+      border-bottom-color: $dark-blue;
+
+      a {
+        color: #fff;
+      }
+  }
+
+  ul.tabrow li:first-child {
+    margin-left: 2rem;
+  }
+  ul.tabrow li:last-child {
+    margin-right: 2.5rem;
+  }
+
+  .tabrow:before {
+      position: absolute;
+      content: " ";
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      border-bottom: 1px solid $light-blue;
+      z-index: 1;
+  }
+  .tabrow li:before,
+  .tabrow li:after {
+      border: 1px solid $light-blue;
+      position: absolute;
+      bottom: -1px;
+      width: 8px;
+      height: 8px;
+      content: " ";
+  }
+  .tabrow li:before {
+      left: -8px;
+      border-bottom-right-radius: 8px;
+      border-width: 0 1px 1px 0;
+      box-shadow: 2px 2px 0 $vlight-blue;
+  }
+  .tabrow li:after {
+      right: -8px;
+      border-bottom-left-radius: 8px;
+      border-width: 0 0 1px 1px;
+      box-shadow: -2px 2px 0 $vlight-blue;
+  }
+  .tabrow li.selected:before {
+      box-shadow: 2px 2px 0 $dark-blue;
+  }
+  .tabrow li.selected:after {
+      box-shadow: -2px 2px 0 $dark-blue;
+  }
 }
