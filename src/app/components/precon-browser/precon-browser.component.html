@@ -168,7 +168,23 @@
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinciduntut laoreet dolore
     </h5>
   </div>
-  <div>
-    <div echarts [options]="chartOption" class="demo-chart"></div>
+  <div class="row">
+    <div class="col-sm-6" style="margin:0 auto;">
+      <div class="chart-size">
+        <div echarts [@slideMenu]="isVisible ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
+          class="demo-chart"></div>
+      </div>
+    </div>
+    <!-- <div [ngClass]="{'col-sm-6':isShown}"> -->
+    <div class="col-sm-6" id="image-list-chart">
+      <div *ngIf="isShown" id="divshow">
+        <!-- <div class="col-sm-6"> -->
+        <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
+          <div fxFlex="30%" *ngFor="let itemFiltered of imagesList">
+            <div><img class="img" [src]="itemFiltered"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
