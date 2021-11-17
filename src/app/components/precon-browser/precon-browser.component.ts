@@ -1,13 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import * as echarts from 'echarts';
+import { trigger, state, style, transition, animate} from '@angular/animations';
 
 @Component({
   selector: 'precon-precon-browser',
   templateUrl: './precon-browser.component.html',
   styleUrls: ['./precon-browser.component.scss'],
+  animations: [
+    trigger('slideMenu', [
+      state('false', style({
+        transform: 'translateX(-250px)'
+      })),
+      state('true', style({
+        transform: 'translateX(0)'
+      })),
+      transition('true <=> false', animate('400ms ease-in-out'))
+    ])
+  ]
 })
 export class PreconBrowserComponent implements OnInit {
+  isVisible: boolean = true;
+  previousEvent: string = ""
+  isShown: boolean = false;
   imagesList: string[] = [];
   reasonsList: ReasonsList[] = [];
   public userArray: User[] = [];
@@ -15,9 +30,9 @@ export class PreconBrowserComponent implements OnInit {
   chartOption: any = {
     tooltip: {},
     xAxis: {
-      name: 'TIME',
+      name: 'YEAR',
       type: 'category',
-      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      data: ['2021', '2022', '2023', '2024', '2025']
     },
     yAxis: {
       name: 'ROI',
@@ -28,7 +43,7 @@ export class PreconBrowserComponent implements OnInit {
     },
     series: [
       {
-        data: [12, 15, 17, 20, 23, 27, 30, 35, 40, 45, 50, 55],
+        data: [10, 15, 25, 30, 40],
         type: 'line',
         smooth: true
       }
@@ -19071,10 +19086,33 @@ export class PreconBrowserComponent implements OnInit {
     
   }
 
+  onToggle() {
+    this.isVisible = !this.isVisible;
+  }
+  
   onChartEvent(event: any, type: string) {
     console.log('chart event:', type, event);
     alert(`${event.name} is selected`);
   }
+  
+  onChartClick(event: any) {
+    // console.log('chart event:', event);
+    // alert(`${event.name} is selected`);
+    // var element = document.getElementById('image-list-chart');
+    if(event.name == this.previousEvent) {
+      this.isShown = ! this.isShown;
+      this.isVisible = !this.isVisible;
+      // if(element != null) {
+      //   element.style.display = 'none';
+      // }
+    } else {
+      this.previousEvent = event.name
+      this.isShown = true;
+      this.isVisible = false;
+      // if(element != null) {
+      //   element.style.display = 'block';
+      // }
+    }
 }
 
 export class User {
