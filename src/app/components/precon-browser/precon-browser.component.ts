@@ -10,7 +10,9 @@ import * as echarts from 'echarts';
 export class PreconBrowserComponent implements OnInit {
   imagesList: string[] = [];
   reasonsList: ReasonsList[] = [];
-  public userArray: User[] = [];
+  userArray: User[] = [];
+  preconData: PreconData[] = [];
+
   mapChartOption: any;
   chartOption: any = {
     tooltip: {},
@@ -69,6 +71,25 @@ export class PreconBrowserComponent implements OnInit {
             );
           }
           console.log(this.userArray);
+        },
+        (erroResponse) => {}
+    );
+
+    this.apiService
+      .getDataCSV({ url: 'http://localhost:4200/csv/precon.csv' })
+      .subscribe(
+        (successResponse: any) => {
+          console.log(successResponse)
+          let csvToRowArray = successResponse.split('\n');
+          for (let index = 1; index < csvToRowArray.length - 1; index++) {
+            let row = csvToRowArray[index].split(',');
+            this.preconData.push(
+              new PreconData(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10],row[11],row[12],row[13],row[14],row[15],row[16])
+            );
+          }
+
+          this.apiService.setLocalStorage('preconData', this.preconData);
+          console.log(this.apiService.getLocalStorage('preconData'));
         },
         (erroResponse) => {}
     );
@@ -19067,8 +19088,6 @@ export class PreconBrowserComponent implements OnInit {
         }
       ]
     };
-
-    
   }
 
   onChartEvent(event: any, type: string) {
@@ -19086,6 +19105,49 @@ export class User {
     this.id = id;
     this.name = name;
     this.lastName = lastName;
+  }
+}
+
+export class PreconData {
+  UID: string;
+  Project_Name: string;
+  City: string;
+  Province: string;
+  Latitude: string;
+  Longitude: string;
+  Beds: string;
+  Baths: string;
+  Area: string;
+  Starting_Price: string;
+  Type: string;
+  Style: string;
+  Developer: string;
+  Aminites: string;
+  Number_of_Images: string;
+  Featured: string;
+  Coming_Soon: string;
+
+  constructor(UID: string,    Project_Name: string,    City: string,    Province: string,    Latitude: string,
+    Longitude: string,    Beds: string,    Baths: string,    Area: string,    Starting_Price: string,    Type: string,
+    Style: string,    Developer: string,    Aminites: string,    Number_of_Images: string,    Featured: string,
+    Coming_Soon: string) {
+      this.UID = UID;
+      this.Project_Name = Project_Name;
+      this.City = City;
+      this.Province = Province;
+      this.Latitude = Latitude;
+      this.Longitude = Longitude;
+      this.Beds = Beds;
+      this.Baths = Baths;
+      this.Area = Area;
+      this.Starting_Price = Starting_Price;
+      this.Type = Type;
+      this.Style = Style;
+      this.Developer = Developer;
+      this.Aminites = Aminites;
+      this.Number_of_Images = Number_of_Images;
+      this.Featured = Featured;
+      this.Coming_Soon = Coming_Soon;
   }
 }
 

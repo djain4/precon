@@ -31,4 +31,13 @@ export class ApiService {
       })
       .pipe(finalize(() => {}));
   }
+
+  setLocalStorage(key: string, data: any) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+
+  getLocalStorage(key: string) {
+    let data: any = localStorage.getItem(key);
+    return JSON.parse(data);
+  }
 }

@@ -1,0 +1,4 @@
+UID,Project_Name,City,Province,Latitude,Longitude,Beds,Baths,Area,Starting_Price,Type,Style,Developer,Aminites,Number_of_Images,Featured,Coming_Soon
+ASD123RTY,ABC,Mississauga,Ontario,43.58651964,-79.64715004,2,2,950,750000,Condo,City Vibes,XYZ,"Gym,Theatre,Party Room,BBQ,Concierge,Swimming Pool, Tennis Court",7,Yes,Yes
+MFG987OIU,ABD,Toronto,Ontario,43.58901434,-79.64984303,1.5,2,700,950000,Condo,City Vibes,XYC,"Gym,Theatre,Party Room,BBQ,Concierge",6,No,No
+QWD907MKO,ABE,Cambridge,Ontario,43.58901434,-79.64984303,3,2,1000,650000,Townhouse,Greenery,XYV,"Community Park,Soccer Field,School",10,No,Yes
