@@ -8,21 +8,33 @@ import { trigger, state, style, transition, animate} from '@angular/animations';
   templateUrl: './precon-browser.component.html',
   styleUrls: ['./precon-browser.component.scss'],
   animations: [
-    trigger('slideMenu', [
+    trigger('slideChart1', [
       state('false', style({
         transform: 'translateX(-250px)'
       })),
       state('true', style({
         transform: 'translateX(0)'
       })),
-      transition('true <=> false', animate('400ms ease-in-out'))
+      transition('false <=> true', animate('400ms ease-in-out'))
+    ]),
+    trigger('slideChart2', [
+      state('false', style({
+        transform: 'translateX(250px)'
+      })),
+      state('true', style({
+        transform: 'translateX(0)'
+      })),
+      transition('false <=> true', animate('400ms ease-in-out'))
     ])
   ]
 })
 export class PreconBrowserComponent implements OnInit {
-  isVisible: boolean = true;
+  isChart1Animate: boolean = true;
+  isChart2Animate: boolean = true;
   previousEvent: string = ""
-  isShown: boolean = false;
+  isShowChart1: boolean = true;
+  isShowChart2: boolean = false;
+  isShowChartImages: boolean = false;
   imagesList: string[] = [];
   reasonsList: ReasonsList[] = [];
   public userArray: User[] = [];
@@ -19085,34 +19097,38 @@ export class PreconBrowserComponent implements OnInit {
 
     
   }
-
-  onToggle() {
-    this.isVisible = !this.isVisible;
-  }
   
   onChartEvent(event: any, type: string) {
     console.log('chart event:', type, event);
     alert(`${event.name} is selected`);
   }
   
-  onChartClick(event: any) {
+  async onChartClick(event: any) {
     // console.log('chart event:', event);
     // alert(`${event.name} is selected`);
-    // var element = document.getElementById('image-list-chart');
     if(event.name == this.previousEvent) {
-      this.isShown = ! this.isShown;
-      this.isVisible = !this.isVisible;
-      // if(element != null) {
-      //   element.style.display = 'none';
-      // }
+      this.isChart1Animate = !this.isChart1Animate;
+      this.isChart2Animate = !this.isChart2Animate;
+      await new Promise(f => setTimeout(f, 200));
+      if(this.isChart1Animate) {
+        this.isShowChartImages = false;
+      }
+      await new Promise(f => setTimeout(f, 200));
+      this.isShowChart2 = !this.isShowChart2;
+      this.isShowChart1 = !this.isShowChart1;
+      if(!this.isChart1Animate) {
+        this.isShowChartImages = true;
+      }
     } else {
-      this.previousEvent = event.name
-      this.isShown = true;
-      this.isVisible = false;
-      // if(element != null) {
-      //   element.style.display = 'block';
-      // }
+      this.isChart2Animate = true;
+      this.isChart1Animate = false;
+      await new Promise(f => setTimeout(f, 398));
+      this.isShowChart1 = false;
+      this.isShowChartImages = true;
+      this.isShowChart2 = true;
+      this.previousEvent = event.name;
     }
+  }
 }
 
 export class User {
