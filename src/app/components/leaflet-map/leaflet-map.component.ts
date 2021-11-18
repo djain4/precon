@@ -20,10 +20,11 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
   // @Output() map$: EventEmitter<Map> = new EventEmitter;
   @Output() zoom$: EventEmitter<number> = new EventEmitter;
   @Input() options: MapOptions = {};
+  @Input() stations: any;
   map: any;
   private zoom: number = 9;
   private markers: Layer[] = [];
-  stations: any;
+  // stations: any;
   iconUrl = "https://decisionfarm.ca/assets/images/marker-icon-2x.png";
 
   markersLayer = new LayerGroup();
@@ -40,7 +41,7 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.options = {
-      zoom: 8,
+      zoom: 2,
       center: latLng(49.8567, -100.9651),
       layers: [
         tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -51,88 +52,88 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
       ]
     };
     this.iconUrl = "https://decisionfarm.ca/assets/images/marker-icon-2x.png";
-    this.stations = [
-      {
-        id: "CAMBOT0548",
-        name: "Kenton (MAFRI)",
-        lat: "50.01870",
-        lng: "-100.59260",
-        installed: 1,
-        active: 1,
-        province: "MB",
-        type: "WIN"
-      },
-      {
-        id: "CAMBSWELKH",
-        name: "Elkhorn (WIN)",
-        lat: "49.92680",
-        lng: "-101.20290",
-        installed: 1,
-        active: 1,
-        province: "MB",
-        type: "WIN"
-      },
-      {
-        id: "CAMBSWPRSN",
-        name: "Pierson (WIN)",
-        lat: "49.17600",
-        lng: "-101.27430",
-        installed: 1,
-        active: 1,
-        province: "MB",
-        type: "WIN"
-      },
-      {
-        id: "CAMBSWVRDN",
-        name: "Virden (WIN)",
-        lat: "49.85670",
-        lng: "-100.96510",
-        installed: 1,
-        active: 1,
-        province: "MB",
-        type: "WIN"
-      },
-      {
-        id: "CASKSCI002",
-        name: "Welwyn (WIN)",
-        lat: "50.28534",
-        lng: "-101.55290",
-        installed: 1,
-        active: 1,
-        province: "SK",
-        type: "WIN"
-      },
-      {
-        id: "CASKSCI008",
-        name: "Storthoaks (WIN)",
-        lat: "49.45841",
-        lng: "-101.64184",
-        installed: 1,
-        active: 1,
-        province: "SK",
-        type: "SK"
-      },
-      {
-        id: "CASKSCI027",
-        name: "Fairlight (WIN)",
-        lat: "49.84212",
-        lng: "-101.74210",
-        installed: 1,
-        active: 1,
-        province: "SK",
-        type: "WIN"
-      },
-      {
-        id: "CAMBECCWEI",
-        name: "MELITA (EC)",
-        lat: "49.28333",
-        lng: "-100.98333",
-        installed: "NULL",
-        active: "NULL",
-        province: "MB",
-        type: "EC"
-      }
-    ]
+    // this.stations = [
+    //   {
+    //     id: "CAMBOT0548",
+    //     name: "Kenton (MAFRI)",
+    //     lat: "50.01870",
+    //     lng: "-100.59260",
+    //     installed: 1,
+    //     active: 1,
+    //     province: "MB",
+    //     type: "WIN"
+    //   },
+    //   {
+    //     id: "CAMBSWELKH",
+    //     name: "Elkhorn (WIN)",
+    //     lat: "49.92680",
+    //     lng: "-101.20290",
+    //     installed: 1,
+    //     active: 1,
+    //     province: "MB",
+    //     type: "WIN"
+    //   },
+    //   {
+    //     id: "CAMBSWPRSN",
+    //     name: "Pierson (WIN)",
+    //     lat: "49.17600",
+    //     lng: "-101.27430",
+    //     installed: 1,
+    //     active: 1,
+    //     province: "MB",
+    //     type: "WIN"
+    //   },
+    //   {
+    //     id: "CAMBSWVRDN",
+    //     name: "Virden (WIN)",
+    //     lat: "49.85670",
+    //     lng: "-100.96510",
+    //     installed: 1,
+    //     active: 1,
+    //     province: "MB",
+    //     type: "WIN"
+    //   },
+    //   {
+    //     id: "CASKSCI002",
+    //     name: "Welwyn (WIN)",
+    //     lat: "50.28534",
+    //     lng: "-101.55290",
+    //     installed: 1,
+    //     active: 1,
+    //     province: "SK",
+    //     type: "WIN"
+    //   },
+    //   {
+    //     id: "CASKSCI008",
+    //     name: "Storthoaks (WIN)",
+    //     lat: "49.45841",
+    //     lng: "-101.64184",
+    //     installed: 1,
+    //     active: 1,
+    //     province: "SK",
+    //     type: "SK"
+    //   },
+    //   {
+    //     id: "CASKSCI027",
+    //     name: "Fairlight (WIN)",
+    //     lat: "49.84212",
+    //     lng: "-101.74210",
+    //     installed: 1,
+    //     active: 1,
+    //     province: "SK",
+    //     type: "WIN"
+    //   },
+    //   {
+    //     id: "CAMBECCWEI",
+    //     name: "MELITA (EC)",
+    //     lat: "49.28333",
+    //     lng: "-100.98333",
+    //     installed: "NULL",
+    //     active: "NULL",
+    //     province: "MB",
+    //     type: "EC"
+    //   }
+    // ]
   }
 
   ngOnDestroy() {

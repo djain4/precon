@@ -140,14 +140,14 @@
 <section class="section">
   <h1>PREFERRED LIFESTYLE</h1>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6" (click)="setLifestyle('CityVibes')">
       <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/R926LU1YEA.jpg" alt="CityVibes"
         style="width:100%">
         <span class="image-text-center">
           CITY VIBES
         </span>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6" (click)="setLifestyle('Greenery')">
       <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/U9PP3KXXY2.jpg" alt="Greenery"
         style="width:100%">
         <span class="image-text-center">
@@ -168,12 +168,12 @@
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinciduntut laoreet dolore
     </h5>
   </div>
-  <div id="chart1" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
+  <!-- <div id="chart1" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
     <div class="chart-size">
       <div id="roiChart" echarts [@slideChart1]="isChart1Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
         class="demo-chart"></div>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <!-- <div id="chart1" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
       <div class="chart-size">
@@ -181,12 +181,18 @@
           class="demo-chart"></div>
       </div>
     </div> -->
-    <div id="chart2" *ngIf="isShowChart2" class="col-sm-6">
+    <div id="chart1" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
       <div class="chart-size">
-        <div echarts [@slideChart2]="isChart2Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
+        <div id="roiChart" echarts [@slideChart1]="isChart1Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
           class="demo-chart"></div>
       </div>
     </div>
+    <!-- <div id="chart2" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
+      <div class="chart-size">
+        <div echarts [@slideChart2]="isChart1Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
+          class="demo-chart"></div>
+      </div>
+    </div> -->
     <div class="col-sm-6" *ngIf="isShowChartImages" id="divshow">
       <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
         <div fxFlex="30%" *ngFor="let itemFiltered of imagesList">

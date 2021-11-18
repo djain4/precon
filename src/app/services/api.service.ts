@@ -2,9 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
+import { PreconData, ReasonsList, User} from '../commons/classes'
 
 @Injectable()
 export class ApiService {
+
+  filterParams: any;
+
   constructor(private httpClient: HttpClient) {}
 
   getData<T>(reqParams: any): Observable<T> {
@@ -32,12 +36,20 @@ export class ApiService {
       .pipe(finalize(() => {}));
   }
 
-  setLocalStorage(key: string, data: any) {
+  setLocalStorage(key: string, data: any)  {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
   getLocalStorage(key: string) {
     let data: any = localStorage.getItem(key);
     return JSON.parse(data);
+  }
+
+  setFilterParams(filterParams: any) {
+    this.filterParams = filterParams;
+  }
+
+  getFilterParams() {
+    return this.filterParams;
   }
 }
