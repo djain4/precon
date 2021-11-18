@@ -1,13 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import * as echarts from 'echarts';
+import { trigger, state, style, transition, animate} from '@angular/animations';
 
 @Component({
   selector: 'precon-precon-browser',
   templateUrl: './precon-browser.component.html',
   styleUrls: ['./precon-browser.component.scss'],
+  animations: [
+    trigger('slideChart1', [
+      state('false', style({
+        transform: 'translateX(-250px)'
+      })),
+      state('true', style({
+        transform: 'translateX(0)'
+      })),
+      transition('false <=> true', animate('400ms ease-in-out'))
+    ]),
+    trigger('slideChart2', [
+      state('false', style({
+        transform: 'translateX(250px)'
+      })),
+      state('true', style({
+        transform: 'translateX(0)'
+      })),
+      transition('false <=> true', animate('400ms ease-in-out'))
+    ])
+  ]
 })
 export class PreconBrowserComponent implements OnInit {
+  isChart1Animate: boolean = true;
+  isChart2Animate: boolean = true;
+  previousEvent: string = ""
+  isShowChart1: boolean = true;
+  isShowChart2: boolean = false;
+  isShowChartImages: boolean = false;
   imagesList: string[] = [];
   reasonsList: ReasonsList[] = [];
   userArray: User[] = [];
@@ -17,9 +44,9 @@ export class PreconBrowserComponent implements OnInit {
   chartOption: any = {
     tooltip: {},
     xAxis: {
-      name: 'TIME',
+      name: 'YEAR',
       type: 'category',
-      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      data: ['2021', '2022', '2023', '2024', '2025']
     },
     yAxis: {
       name: 'ROI',
@@ -30,7 +57,7 @@ export class PreconBrowserComponent implements OnInit {
     },
     series: [
       {
-        data: [12, 15, 17, 20, 23, 27, 30, 35, 40, 45, 50, 55],
+        data: [10, 15, 25, 30, 40],
         type: 'line',
         smooth: true
       }
@@ -19089,10 +19116,37 @@ export class PreconBrowserComponent implements OnInit {
       ]
     };
   }
-
+  
   onChartEvent(event: any, type: string) {
     console.log('chart event:', type, event);
     alert(`${event.name} is selected`);
+  }
+  
+  async onChartClick(event: any) {
+    // console.log('chart event:', event);
+    // alert(`${event.name} is selected`);
+    if(event.name == this.previousEvent) {
+      this.isChart1Animate = !this.isChart1Animate;
+      this.isChart2Animate = !this.isChart2Animate;
+      await new Promise(f => setTimeout(f, 200));
+      if(this.isChart1Animate) {
+        this.isShowChartImages = false;
+      }
+      await new Promise(f => setTimeout(f, 200));
+      this.isShowChart2 = !this.isShowChart2;
+      this.isShowChart1 = !this.isShowChart1;
+      if(!this.isChart1Animate) {
+        this.isShowChartImages = true;
+      }
+    } else {
+      this.isChart2Animate = true;
+      this.isChart1Animate = false;
+      await new Promise(f => setTimeout(f, 398));
+      this.isShowChart1 = false;
+      this.isShowChartImages = true;
+      this.isShowChart2 = true;
+      this.previousEvent = event.name;
+    }
   }
 }
 
