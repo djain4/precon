@@ -20,6 +20,12 @@
 </div>
 
 <div  *ngIf="!showProjectDetails"> 
+  <div id="outer">
+    <div class="inner" onclick="alert('Clicked')"><strong class="sort_label">LOCATION</strong></div>
+    <div class="inner"><strong class="sort_label">PRICE</strong></div>
+    <div class="inner"><strong class="sort_label">STYLE</strong></div>
+    <div class="inner"><strong class="sort_label">ROI/TIME</strong></div>
+  </div>
   <div class="project_container m-tb-20" *ngFor="let project of listOfProjects">
     <div class="row p-3">
       <div class="col-sm-8">
