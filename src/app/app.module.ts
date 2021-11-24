@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
-
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { FlexComponent } from './components/flex/flex.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchComponent } from './components/search/search.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list'
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,11 +38,15 @@ import { LeafletMapComponent } from './components/leaflet-map/leaflet-map.compon
     AppRoutingModule,
     NgxEchartsModule.forRoot({echarts}),
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatSelectModule,
     MatInputModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    MatGridListModule,  
     MatRippleModule,
     MatCardModule,
     LeafletModule

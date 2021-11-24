@@ -1,5 +1,11 @@
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 
 @Component({
   selector: 'precon-flex',
@@ -11,6 +17,7 @@ export class FlexComponent implements OnInit {
   customTitle = '';
 
   showCities = false;
+  lightblue= 'lightblue';
 
   showImages = false;
 
@@ -23,6 +30,12 @@ export class FlexComponent implements OnInit {
   imagesList: string[] = [];
   cityList: string[] = [];
 
+  tiles: Tile[] = [
+    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+  ];
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {

@@ -20,6 +20,15 @@ h1, h2, h3, h4, h5, h6 {
   color: $dark-blue;
 }
 
+
+.navbar {
+  position: fixed;
+  display: none;
+  z-index: 1000;
+}
+
+
+
 .border-none {
   border: none;
 }
@@ -141,6 +150,20 @@ button {
   body {
     font-size: 12px;
   }
+
+  .navbar {
+    display: block;
+    width: 100%;
+  }
+
+  .navbar-curve {
+    display: none;
+  }
+
+  button {
+    width: 6rem
+  }
+
   .section {
     h5 {
       margin: 2rem 2rem;
@@ -157,4 +180,3 @@ button {
     line-height: 0.5rem;
   }
 }
-

@@ -10,16 +10,41 @@
 	    <li [routerLink]="['projects']" [routerLinkActive]="['selected']"><a href="javascript:none">PROJECTS</a></li>
 	    <li [routerLink]="['why-canada']" [routerLinkActive]="['selected']"><a href="javascript:none">WHY CANADA</a></li>
 	    <li [routerLink]="['pre-construction']" [routerLinkActive]="['selected']"><a href="javascript:none">WHY PRE-CONSTRUCTION</a></li>
-      <!-- <ng-container *ngFor="let navItem of navItems; let i = index">
-        <li
-          [routerLink]="navItem.route"
-          [routerLinkActive]="['active']"
-        >
-          <a ngbNavLink>{{ navItem.title }}</a>
-        </li>
-      </ng-container> -->
-	</ul>
+      
+	  </ul>
   </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Precon Browser</a>
+    <button type="button" (click)="showMenu()" style="float: right;" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'show' : _showMenu}">
+      <ul class="navbar-nav" (click)="showMenu()">
+        <li class="nav-item" [routerLink]="['home']" [routerLinkActive]="['selected']">
+          <a href="javascript:none">
+            <span style="font-weight: 600;">PRECON</span>
+            <span style="font-weight: 100;">BROWSER</span>
+          </a>
+        </li>
+        <li class="nav-item" [routerLink]="['projects']" [routerLinkActive]="['selected']"><a href="javascript:none">PROJECTS</a></li>
+        <li class="nav-item" [routerLink]="['why-canada']" [routerLinkActive]="['selected']"><a href="javascript:none">WHY CANADA</a></li>
+        <li class="nav-item" [routerLink]="['pre-construction']" [routerLinkActive]="['selected']"><a href="javascript:none">WHY PRE-CONSTRUCTION</a></li>
+<!--         
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
   <!-- <ul
     ngbNav
     #nav="ngbNav"

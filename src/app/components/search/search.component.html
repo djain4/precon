@@ -11,3 +11,187 @@
     <precon-flex [customTitle]="cities"></precon-flex>
   </div>
 </form>
+
+<div class="search-wrapper">
+  <mat-grid-list cols="4" rowHeight="50px">
+    <!-- <form class="example-form"> -->
+      <!-- <mat-form-field class="example-full-width"> -->
+        <mat-grid-tile
+          [colspan]="3"
+          [rowspan]="1"
+          [style.background]="lightblue">
+              <span matPrefix> </span>
+              <input #input style="width: 100%; background: #74B0FF; 
+              border: none; border-bottom: 1px solid; 
+              font-weight: 500;
+              color: #0455BF;
+              text-align: left;
+              height: 50%;
+              padding: 2px 5px;
+              text-transform: uppercase;" type="tel" matInput placeholder="City Browser" name= "search" 
+              [(ngModel)]= "search">
+              <!-- <button matSuffix mat-button>Filter</button> -->
+        </mat-grid-tile>
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1"
+          [style.background]="lightblue">
+              <span matPrefix> </span>
+              <!-- <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search"> -->
+              <button style="width: 100%; background: #BF5E04;
+              color: white;
+              box-shadow: none;
+              text-transform: uppercase;" matSuffix mat-button (click)="onFilterClick()">Filter</button>
+        </mat-grid-tile>
+      <!-- </mat-form-field> -->
+      <!-- </form> -->
+  </mat-grid-list>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        [colspan]="3"
+        [rowspan]="1"
+        [style.background]="lightblue">
+        <div class="container" fxLayout="row wrap" fxLayout.xs="column" >
+          <div fxFlex="25%" *ngFor="let item of filteredPreconData; let i= index">
+              <div>
+                  <mat-card matRipple class="clickable">{{item.City}}</mat-card>
+              </div>
+          </div>
+          <!-- <div fxFlex="25%">
+            <div>
+                <mat-card matRipple class="clickable">fgdfgdf</mat-card>
+            </div>
+          </div>
+          <div fxFlex="25%">
+            <div>
+                <mat-card matRipple class="clickable">fgdfgdf</mat-card>
+            </div>
+          </div>
+          <div fxFlex="25%">
+            <div>
+                <mat-card matRipple class="clickable">fgdfgdf</mat-card>
+            </div>
+          </div>
+          <div fxFlex="25%">
+            <div>
+                <mat-card matRipple class="clickable">fgdfgdf</mat-card>
+            </div>
+          </div>
+          <div fxFlex="25%">
+            <div>
+                <mat-card matRipple class="clickable">fgdfgdf</mat-card>
+            </div>
+          </div>
+          <div fxFlex="25%">
+            <div>
+                <mat-card matRipple class="clickable">fgdfgdf</mat-card>
+            </div>
+          </div>
+          <div fxFlex="25%">
+            <div>
+                <mat-card matRipple class="clickable">fgdfgdf</mat-card>
+            </div>
+          </div> -->
+      </div>
+      <!-- <mat-card matRipple class="clickable">dfdfd</mat-card> -->
+    </mat-grid-tile>
+    <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="4"
+        [style.background]="lightblue" >
+        <div fxLayout="row wrap" fxLayout.xs="column" *ngIf="showFilter" style="border: 1px solid;" >
+          <div fxFlex="100%">
+            <mat-form-field>
+              <mat-label>Regions</mat-label>
+              <mat-select [(ngModel)]="regions" multiple>
+                <mat-option *ngFor="let regions of regionsList" [value]="regions">{{regions}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100%">
+            <mat-form-field>
+              <mat-label>Coming Soon</mat-label>
+              <mat-select [(ngModel)]="comingSoon" multiple>
+                <mat-option *ngFor="let comingSoon of comingSoonList" [value]="comingSoon">{{comingSoon}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100%">
+            <mat-form-field>
+              <mat-label>Type</mat-label>
+              <mat-select [(ngModel)]="type" multiple>
+                <mat-option *ngFor="let type of typeList" [value]="type">{{type}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100%">
+            <mat-form-field>
+              <mat-label>Beds</mat-label>
+              <mat-select [(ngModel)]="beds" multiple>
+                <mat-option *ngFor="let beds of bedsList" [value]="beds">{{beds}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100%">
+            <mat-form-field>
+              <mat-label>Baths</mat-label>
+              <mat-select [(ngModel)]="baths" multiple>
+                <mat-option *ngFor="let baths of bathsList" [value]="baths">{{baths}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100%">
+            <button (click)="findProperty()" style="width: 80%; margin-bottom: 15px;" matSuffix mat-button>Find Property</button>
+          </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+          [colspan]="3"
+          [rowspan]="3"
+          [style.background]="lightblue">
+          <div class="container" fxLayout="row wrap" fxLayout.xs="column" >
+            <div fxFlex="25%">
+                <div>
+                    <img class="img" [src]="itemFiltered">
+                </div>
+            </div>
+            <div fxFlex="25%">
+              <div>
+                  <img class="img" [src]="itemFiltered">
+              </div>
+            </div>
+            <div fxFlex="25%">
+              <div>
+                  <img class="img" [src]="itemFiltered">
+              </div>
+            </div>
+            <div fxFlex="25%">
+              <div>
+                  <img class="img" [src]="itemFiltered">
+              </div>
+            </div>
+            <div fxFlex="25%">
+              <div>
+                  <img class="img" [src]="itemFiltered">
+              </div>
+            </div>
+            <div fxFlex="25%">
+              <div>
+                  <img class="img" [src]="itemFiltered">
+              </div>
+            </div>
+            <div fxFlex="25%">
+              <div>
+                  <img class="img" [src]="itemFiltered">
+              </div>
+            </div>
+            <div fxFlex="25%">
+              <div>
+                  <img class="img" [src]="itemFiltered">
+              </div>
+            </div>
+          </div>
+        <!-- <mat-card matRipple class="clickable">dfdfd</mat-card> -->
+      </mat-grid-tile>
+  </mat-grid-list>
+</div>

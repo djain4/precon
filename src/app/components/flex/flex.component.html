@@ -1,13 +1,48 @@
-<div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
-    <div fxFlex="30%" *ngFor="let item of response">
+
+<mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        [colspan]="3"
+        [rowspan]="1"
+        [style.background]="lightblue">
+      <div class="container" fxLayout="row wrap" fxLayout.xs="column" >
+          <div fxFlex="25%" *ngFor="let item of response">
+              <div *ngIf="showCities">
+                  <mat-card (click)="onCardClick($event)" matRipple class="clickable">{{ item }}</mat-card>
+              </div>
+              <div *ngIf="showImages"><img class="img" [src]="item"></div>
+          </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="5"
+        [style.background]="lightblue">
+      dfsdfd
+    </mat-grid-tile>
+    <mat-grid-tile
+        *ngFor="let tile of tiles"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color">
+      
+      <div class="container" fxLayout="row wrap" fxLayout.xs="column" >
+        <div fxFlex="25%" *ngFor="let itemFiltered of filteredImages">
+            <div *ngIf="showImagesFiltered"><img class="img" [src]="itemFiltered"></div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+<!--   
+<div class="container" fxLayout="row wrap" fxLayout.xs="column" >
+    <div fxFlex="25%" *ngFor="let item of response">
         <div *ngIf="showCities">
             <mat-card (click)="onCardClick($event)" matRipple class="clickable">{{ item }}</mat-card>
         </div>
         <div *ngIf="showImages"><img class="img" [src]="item"></div>
     </div>
 </div>
-<div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
-    <div fxFlex="30%" *ngFor="let itemFiltered of filteredImages">
+<div class="container" fxLayout="row wrap" fxLayout.xs="column" >
+    <div fxFlex="25%" *ngFor="let itemFiltered of filteredImages">
         <div *ngIf="showImagesFiltered"><img class="img" [src]="itemFiltered"></div>
     </div>
-</div>
+</div> -->

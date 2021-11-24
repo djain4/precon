@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   active = 0;
   navItems: any = [];
-
+  _showMenu = false;
+  
   constructor(private _router: Router) {}
 
   ngOnInit(): void {
@@ -32,5 +33,9 @@ export class HeaderComponent implements OnInit {
     );
 
     this.active = navItems ? navItems.index : 0;
+  }
+
+  showMenu() {
+    this._showMenu = !this._showMenu;
   }
 }
