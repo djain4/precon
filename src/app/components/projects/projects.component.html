@@ -21,12 +21,27 @@
 
 <div  *ngIf="!showProjectDetails"> 
   <div id="outer">
-    <div class="inner" onclick="alert('Clicked')"><strong class="sort_label">LOCATION</strong></div>
-    <div class="inner"><strong class="sort_label">PRICE</strong></div>
-    <div class="inner"><strong class="sort_label">STYLE</strong></div>
-    <div class="inner"><strong class="sort_label">ROI/TIME</strong></div>
+    <div class="inner" [ngClass]="{'active': sortByValue == 0}" (click)="onSortBy(0)">
+      <strong class="sort_label">LOCATION</strong>
+      <i *ngIf="sortByValue != 0" class="bi bi-arrow-down-up"></i>
+      <i *ngIf="sortByValue == 0 && sortByValueCounter == 1" class="bi bi-arrow-up"></i>
+      <i *ngIf="sortByValue == 0 && sortByValueCounter == 2" class="bi bi-arrow-down"></i>
+    </div>
+    <div class="inner" [ngClass]="{'active': sortByValue == 1}" (click)="onSortBy(1)">
+      <strong class="sort_label">PRICE</strong>
+      <i *ngIf="sortByValue != 1" class="bi bi-arrow-down-up"></i>
+      <i *ngIf="sortByValue == 1 && sortByValueCounter == 1" class="bi bi-arrow-up"></i>
+      <i *ngIf="sortByValue == 1 && sortByValueCounter == 2" class="bi bi-arrow-down"></i>
+    </div>
+    <div class="inner" [ngClass]="{'active': sortByValue == 2}" (click)="onSortBy(2)">
+      <strong class="sort_label">STYLE</strong>
+      <i *ngIf="sortByValue != 2" class="bi bi-arrow-down-up"></i>
+      <i *ngIf="sortByValue == 2 && sortByValueCounter == 1" class="bi bi-arrow-up"></i>
+      <i *ngIf="sortByValue == 2 && sortByValueCounter == 2" class="bi bi-arrow-down"></i>
+    </div>
+    <!-- <div class="inner" [ngClass]="{'active': sortByValue == 3}" (click)="onSortBy(3)"><strong class="sort_label">ROI/TIME</strong></div> -->
   </div>
-  <div class="project_container m-tb-20" *ngFor="let project of listOfProjects">
+  <div class="project_container m-tb-20" *ngFor="let project of filteredListOfProjects">
     <div class="row p-3">
       <div class="col-sm-8">
         <div class="row">
@@ -81,98 +96,6 @@
       </div>
     </div>
     
-  </div>
-</div>
-<div class="project_container m-tb-20" *ngIf="showProjectDetails">
-  <div class="row p-3">
-    <div class="col-sm-8">
-      <div class="row">
-        <div class="col m-b-10">
-          <h4>{{selectedProject.Project_Name}}</h4>
-          <p>
-            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum
-            dolor sit amet, Lorem ipsum dolor sit amet.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col m-b-10">
-          <h6>Location</h6>
-          <p>Lorem ipsum dolor sit ame</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col m-b-10">
-          <h6>Starting Price</h6>
-          <p>CAD ${{selectedProject.Starting_Price}}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col m-b-10">
-          <h6>Type</h6>
-          <p>Lorem ipsum dolor sit ame</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <h6 style="float: left">Style</h6>
-          <span style="float: right"> Lorem ipsum dolor sit ame </span>
-        </div>
-        <div class="col-sm-6">
-          <h6 style="float: left">Developer</h6>
-          <span style="float: right">Lorem ipsum dolor sit ame</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="m-tb-20">
-        <img
-          src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg"
-          alt="Project Image"
-        />
-      </div>
-      <div class="m-tb-20" style="float: right">
-        <button>Click Here</button>
-      </div>
-    </div>
-  </div>
-  <div class="row p-3">
-    <precon-leaflet-map id="leafletId" [stations]="selectedProjectStation"></precon-leaflet-map>
-    <div style="margin:2rem auto">
-      <div class="container" fxLayout="column wrap" fxLayout.xs="column" fxLayoutGap="2%" fxLayoutAlign="left">
-        <div fxFlex="50%" *ngFor="let itemFiltered of amnitiesList" style="padding-bottom: 5%">
-          <div style="display: flex;">
-            <div class="sub-header" style="width: 5rem; float: left; padding-right: 10px">
-              <div>
-                <img class="img" src="{{itemFiltered.imageUrl}}" 
-                style="border-radius: 50%;margin-bottom: 0px;">
-              </div>
-            </div>
-            <div class="description"><div class="m-b-10"><h6>Location</h6><p>{{ itemFiltered.description }}</p></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div style="margin-top:2rem">
-      <div style="margin:2rem">
-        <h6>Aminities</h6>
-      </div>
-      <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="2%" fxLayoutAlign="left">
-        <div fxFlex="30%" *ngFor="let itemFiltered of amnitiesList" style="padding-bottom: 3%">
-          <div>
-            <div class="sub-header" style="width: 5rem;">
-              <div>
-                <img class="img" src="{{itemFiltered.imageUrl}}" 
-                style="border-radius: 50%;margin-bottom: 0px;">
-              </div>
-            </div>
-            <div class="description">{{ itemFiltered.description }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

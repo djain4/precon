@@ -1,17 +1,3 @@
-<form class="example-form">
-  <section>
-    <!-- <mat-form-field>
-      <mat-label>City Browser</mat-label>
-      <input matInput (focus)="onFocusEvent($event)" />
-    </mat-form-field> -->
-    <button type="button" (click)="toggleDiv()" mat-raised-button color="white" class="button">City Browser</button>
-    <label color="white" background-color="black">Search</label>
-  </section>
-  <div *ngIf="isShown" class="row container-fluid" id="divshow">
-    <precon-flex [customTitle]="cities"></precon-flex>
-  </div>
-</form>
-
 <div class="search-wrapper">
   <mat-grid-list cols="4" rowHeight="50px">
     <!-- <form class="example-form"> -->
@@ -108,14 +94,14 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div fxFlex="100%">
+          <!-- <div fxFlex="100%">
             <mat-form-field>
               <mat-label>Coming Soon</mat-label>
               <mat-select [(ngModel)]="comingSoon" multiple>
                 <mat-option *ngFor="let comingSoon of comingSoonList" [value]="comingSoon">{{comingSoon}}</mat-option>
               </mat-select>
             </mat-form-field>
-          </div>
+          </div> -->
           <div fxFlex="100%">
             <mat-form-field>
               <mat-label>Type</mat-label>

@@ -54,6 +54,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.preconData = this.apiService.getLocalStorage('preconData');
+
+    this.filteredPreconData = this.preconData;
   }
 
   ngAfterViewInit() {
@@ -64,8 +66,8 @@ export class SearchComponent implements OnInit {
                 distinctUntilChanged(),
                 tap((text) => {
                   this.filteredPreconData = this.input?.nativeElement.value 
-                  ? this.preconData.filter(item => item.City.indexOf(this.input?.nativeElement.value) > -1)
-                  : [];
+                  ? this.preconData.filter(item => item.City.toLowerCase().indexOf(this.input?.nativeElement.value.toLowerCase()) > -1)
+                  : this.preconData;
                 })
             )
             .subscribe();

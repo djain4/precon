@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { ApiService } from '../../services/api.service';
-import { PreconData, ReasonsList, User} from '../../commons/classes'
+import { PreconData, ReasonsList, User } from '../../commons/classes';
 
 @Component({
   selector: 'precon-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent implements OnInit {
-
   amnitiesList: any = [];
-  listOfProjects: PreconData[] =  [];
+  listOfProjects: PreconData[] = [];
+  filteredListOfProjects: PreconData[] = [];
   showProjectDetails: boolean = false;
   selectedProject: any;
   selectedProjectStation: any;
+  sortByValue: any;
+  sortByValueCounter: number = 0;
 
-
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private _router: Router) {}
 
   ngOnInit(): void {
     this.apiService
@@ -28,19 +31,21 @@ export class ProjectsComponent implements OnInit {
         (erroResponse) => {}
       );
 
-      let listOfProjects: PreconData[] = this.apiService.getLocalStorage('preconData');
+    let listOfProjects: PreconData[] =
+      this.apiService.getLocalStorage('preconData');
 
-      let filterParams: PreconData = this.apiService.getFilterParams();
+    let filterParams: PreconData = this.apiService.getFilterParams();
 
-      if(filterParams) {
-        listOfProjects.forEach(obj => { 
-          if(this.partialContains(obj, filterParams)) {
-            this.listOfProjects.push(obj);
-          }
-        });
-      } else {
-        this.listOfProjects = listOfProjects;
-      }
+    if (filterParams) {
+      listOfProjects.forEach((obj) => {
+        if (this.partialContains(obj, filterParams)) {
+          this.listOfProjects.push(obj);
+        }
+      });
+    } else {
+      this.listOfProjects = listOfProjects;
+    }
+    this.filteredListOfProjects = [...this.listOfProjects];
   }
 
   partialContains(object: any, subObject: any) {
@@ -49,23 +54,25 @@ export class ProjectsComponent implements OnInit {
     const subProps = Object.getOwnPropertyNames(subObject);
 
     if (subProps.length > objProps.length) {
-        return false;
+      return false;
     }
 
     for (const subProp of subProps) {
-        if (!object.hasOwnProperty(subProp)) {
-            return false;
-        }
+      if (!object.hasOwnProperty(subProp)) {
+        return false;
+      }
 
-        if (object[subProp] !== subObject[subProp]) {
-            return false;
-        }
+      if (object[subProp] !== subObject[subProp]) {
+        return false;
+      }
     }
 
     return true;
   }
 
   onShowProjectDetails(project: PreconData) {
+    this._router.navigate(['/projects/details']);
+
     this.showProjectDetails = true;
     this.selectedProjectStation = [
       {
@@ -76,11 +83,60 @@ export class ProjectsComponent implements OnInit {
         installed: 1,
         active: 1,
         province: project.Province,
-        type: project.Style
-      }
-    ]
+        type: project.Style,
+      },
+    ];
     this.selectedProject = project;
+
+    this.apiService.setSelectedProjectStation(this.selectedProjectStation);
+    this.apiService.setSelectedProject(this.selectedProject);
   }
 
-  
+  onSortBy(value: number) {
+    switch (value) {
+      case 0:
+        this.updateSortedObject('City', 0)
+        break;
+      case 1:
+        this.updateSortedObject('Starting_Price', 1)
+        break;
+      case 2:
+        this.updateSortedObject('Style', 2)
+        break;
+      case 3:
+        this.updateSortedObject('City', 3)
+        break;
+      default:
+        break;
+    }
+  }
+
+  updateSortedObject(obj: any, sortByValue: number) {
+
+    if(this.sortByValue == sortByValue) {
+      if (this.sortByValueCounter == 0) {
+        this.sortByValueCounter++;
+        this.filteredListOfProjects = this.filteredListOfProjects.sort(
+          (a: any, b: any) => (a[obj] > b[obj]) ? 1 : -1
+        );
+        this.sortByValue = sortByValue;
+      } else if (this.sortByValueCounter == 1) {
+        this.sortByValueCounter++;
+        this.filteredListOfProjects = this.filteredListOfProjects.sort(
+          (a: any, b: any) => (b[obj] > a[obj]) ? 1 : -1
+        );
+        this.sortByValue = sortByValue;
+      } else if (this.sortByValueCounter == 2) {
+        this.sortByValueCounter = 0;
+        this.filteredListOfProjects = [...this.listOfProjects];
+        this.sortByValue = null;
+      }
+    } else {
+      this.sortByValue = sortByValue;
+      this.sortByValueCounter = 1;
+      this.filteredListOfProjects = this.filteredListOfProjects.sort(
+        (a: any, b: any) => (a[obj] > b[obj]) ? 1 : -1
+      );
+    }
+  }
 }

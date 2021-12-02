@@ -8,6 +8,8 @@ import { PreconData, ReasonsList, User} from '../commons/classes'
 export class ApiService {
 
   filterParams: any;
+  selectedProject: any;
+  selectedProjectStation: any;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -51,5 +53,21 @@ export class ApiService {
 
   getFilterParams() {
     return this.filterParams;
+  }
+
+  setSelectedProject(project: any) {
+    this.selectedProject = project;
+  }
+
+  getSelectedProject() {
+    return this.selectedProject;
+  }
+
+  setSelectedProjectStation(station: any) {
+    this.selectedProjectStation = station;
+  }
+
+  getSelectedProjectStation() {
+    return this.selectedProjectStation;
   }
 }

@@ -17,7 +17,7 @@
             aliquip ex ea commodo consequat. Duis aute irure dolor in.
           </div>
           <div>
-            <button>Submit</button>
+            <button (click)="onContactUs()">Contact Us</button>
           </div>
         </div>
       </div>
@@ -108,9 +108,9 @@
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinciduntut laoreet dolore
     </h5>
   </div>
-  <div class="container">
-    <div class="post-list animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
-      <div fxFlex="30%" *ngFor="let itemFiltered of imagesList; let i = index" class="animate animate-{{i}}">
+  <div class="container" style="max-height: 500px;">
+    <div class="animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
+      <div fxFlex="30%" *ngFor="let itemFiltered of featuredImageList; let i = index" class="animate animate-{{i}}">
         <div>
           <img class="img" [src]="itemFiltered" />
         </div>
