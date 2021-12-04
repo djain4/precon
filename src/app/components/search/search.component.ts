@@ -167,6 +167,17 @@ export class SearchComponent implements OnInit {
 
   onCitySelected(city: string, selectedCityIndex: number) {
     this.search = city;
+
+    this.filteredPreconData = this.preconData
+      .filter(
+        (item) => item.City.toLowerCase().indexOf(city.toLowerCase()) > -1
+      )
+      .slice(0, 8);
+
+    this.cityList = [
+      ...new Set(this.filteredPreconData.map((item) => item.City).slice(0, 8)),
+    ];
+
     this.showCities = true;
     this.selectedCityIndex = selectedCityIndex;
     this.findProperty();
