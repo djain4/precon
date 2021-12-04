@@ -18,6 +18,7 @@ export class ProjectsComponent implements OnInit {
   selectedProjectStation: any;
   sortByValue: any;
   sortByValueCounter: number = 0;
+  imgList: string[] = [];
 
   constructor(private apiService: ApiService, private _router: Router) {}
 
@@ -46,6 +47,8 @@ export class ProjectsComponent implements OnInit {
       this.listOfProjects = listOfProjects;
     }
     this.filteredListOfProjects = [...this.listOfProjects];
+
+    this.imgList = this.filteredListOfProjects.map(item => `/assets/images/${item.Project_Name}/1.png`);
   }
 
   partialContains(object: any, subObject: any) {
