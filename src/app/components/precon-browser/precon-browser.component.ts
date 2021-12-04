@@ -234,7 +234,6 @@ export class PreconBrowserComponent implements OnInit {
   }
 
   onChartEvent(event: any, type: string) {
-    alert(`${event.name} is selected`);
     let region = event.name.split('(');
     this.apiService.setFilterParams({ Region: region[0].trim() });
     this.router.navigate(['/projects']);
