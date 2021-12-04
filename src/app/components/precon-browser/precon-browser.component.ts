@@ -126,7 +126,7 @@ export class PreconBrowserComponent implements OnInit {
       );
 
     this.apiService
-      .getDataCSV({ url: 'http://localhost:4200/csv/precon.csv' })
+      .getDataCSV({ url: 'http://localhost:4200/csv/precon1.csv' })
       .subscribe(
         (successResponse: any) => {
           console.log(successResponse);
@@ -151,7 +151,11 @@ export class PreconBrowserComponent implements OnInit {
                 row[13],
                 row[14],
                 row[15],
-                row[16]
+                row[16],
+                row[17],
+                row[18],
+                row[19],
+                row[20]
               )
             );
           }
@@ -168,11 +172,11 @@ export class PreconBrowserComponent implements OnInit {
           let provinceProjectCount: any = {};
 
           listOfProjects.forEach((project) => {
-            if (provinceProjectCount[project.Province] == null) {
-              provinceProjectCount[project.Province] = 1;
+            if (provinceProjectCount[project.Region] == null) {
+              provinceProjectCount[project.Region] = 1;
             } else {
-              provinceProjectCount[project.Province] =
-                provinceProjectCount[project.Province] + 1;
+              provinceProjectCount[project.Region] =
+                provinceProjectCount[project.Region] + 1;
             }
           });
 
