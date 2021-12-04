@@ -169,7 +169,6 @@ export class LeafletMapComponent implements OnInit, OnDestroy {
   }
 
   onClick(data: any){
-    console.log(data);
     alert(`Get ready to explore project @::` +  data.target.options.title)
     // const sidebar = this.sidebar.sidebar;
     // sidebar.removePanel('text');

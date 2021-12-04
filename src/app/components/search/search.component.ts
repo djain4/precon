@@ -1,8 +1,21 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, tap, filter } from 'rxjs/operators';
-import { PreconData, ReasonsList, User} from '../../commons/classes'
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  AfterViewInit,
+  ViewChild,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { fromEvent } from 'rxjs';
+import { Router } from '@angular/router';
+
+import {
+  debounceTime,
+  distinctUntilChanged,
+  tap,
+  filter,
+} from 'rxjs/operators';
+import { PreconData, ReasonsList, User } from '../../commons/classes';
 import { ApiService } from '../../services/api.service';
 
 export interface Tile {
@@ -15,7 +28,7 @@ export interface Tile {
 @Component({
   selector: 'precon-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
   search: any;
@@ -24,63 +37,88 @@ export class SearchComponent implements OnInit {
   cities = 'cities';
   image = 'images';
   tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
+    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
+    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
+    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
   ];
-  showFilter = true;
-  toppings = new FormControl('#FFF6EF');
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-  regionsList: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
-  comingSoonList: string[] = ['Jan', 'Feb', 'March', 'April', 'May', 'June'];
-  typeList: string[] = ['Greenery', 'CityVibes'];
-  bedsList: string[] = ['1', '2', '3', '4', '5', '5+'];
-  bathsList: string[] = ['1', '2', '3', '4', '5', '5+'];
-  baths: any = [];
-  beds: any = [];
-  type: any = [];
-  comingSoon: any = [];
-  regions: any = [];
+  showFilter = false;
+  showCities = false;
+  showImages = false;
+  selectedCityIndex: number = -1;
+  selectedProjectImages: string[] = [];
+  selectedProject: any;
 
-  itemFiltered = "https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg";
+  toppings = new FormControl('#FFF6EF');
+  toppingList: string[] = [
+    'Extra cheese',
+    'Mushroom',
+    'Onion',
+    'Pepperoni',
+    'Sausage',
+    'Tomato',
+  ];
+  cityList: string[] = [];
+  regionsList: string[] = [];
+  typeList: string[] = [];
+  bedsList: string[] = [];
+  bathsList: string[] = [];
+
+  regions: any = [];
+  type: any = [];
+  beds: any = [];
+  baths: any = [];
+
+  itemFiltered =
+    'https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg';
   preconData: PreconData[] = [];
   filteredPreconData: PreconData[] = [];
 
   @ViewChild('input') input?: ElementRef;
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.preconData = this.apiService.getLocalStorage('preconData');
 
     this.filteredPreconData = this.preconData;
+
+    this.regionsList = [... new Set(this.preconData.map(item => item.Region))];
+    this.typeList = [... new Set(this.preconData.map(item => item.Type))];
+    this.bathsList = [... new Set(this.preconData.map(item => item.Baths).join('|').split('|'))];
+    this.bedsList = [... new Set(this.preconData.map(item => item.Beds).join('|').split('|'))];
+    this.cityList =  [... new Set(this.preconData.map(item => item.City))];
   }
 
   ngAfterViewInit() {
-    fromEvent(this.input?.nativeElement,'keyup')
-            .pipe(
-                filter(Boolean),
-                debounceTime(150),
-                distinctUntilChanged(),
-                tap((text) => {
-                  this.filteredPreconData = this.input?.nativeElement.value 
-                  ? this.preconData.filter(item => item.City.toLowerCase().indexOf(this.input?.nativeElement.value.toLowerCase()) > -1)
-                  : this.preconData;
-                })
-            )
-            .subscribe();
+    fromEvent(this.input?.nativeElement, 'keyup')
+      .pipe(
+        filter(Boolean),
+        debounceTime(150),
+        distinctUntilChanged(),
+        tap((text) => {
+          this.filteredPreconData = this.input?.nativeElement.value
+            ? this.preconData.filter(
+                (item) =>
+                  item.City.toLowerCase().indexOf(
+                    this.input?.nativeElement.value.toLowerCase()
+                  ) > -1
+              ).slice(0, 8)
+            : this.preconData;
+            this.selectedCityIndex = -1;
+        })
+      )
+      .subscribe();
   }
 
-  modelChanged() { }
+  modelChanged() {}
 
   // onFocusEvent(event: any){
   //   this.isShown = ! this.isShown;
   // }
 
-  toggleDiv(){
-    this.isShown = ! this.isShown;
+  toggleDiv() {
+    this.isShown = !this.isShown;
   }
 
   // onFocusOutEvent(event: any){
@@ -91,19 +129,78 @@ export class SearchComponent implements OnInit {
     this.showFilter = !this.showFilter;
   }
 
-  findProperty() {
-    console.log("Sdfdsfds")
-    console.log("Sdfdsfds" + this.regions);
-    console.log("Sdfdsfds" + this.comingSoon);
-    console.log("Sdfdsfds" + this.beds);
-    console.log("Sdfdsfds" + this.baths);
-    console.log("Sdfdsfds" + this.type);
+  onFocus() {
+    this.showCities = true;
+  }
 
-    this.preconData
-      .filter(item => this.regions.indexOf(item.Region) > -1)
-      .filter(item => item.Beds.split(',').filter(ef => this.regions.indexOf(ef) > -1))
-      .filter(item => item.Baths.split(',').filter(ef => this.regions.indexOf(ef) > -1))
-      .filter(item => this.regions.indexOf(item.Type) > -1)
+  onBlur() {
+    setTimeout(() => {
+      if (this.input?.nativeElement.value.length == 0) {
+        this.showCities = false;
+      }
+    }, 1000);
+  }
+
+  onCitySelected(city: string, selectedCityIndex: number) {
+    this.search = city;
+    this.showCities = true;
+    this.selectedCityIndex = selectedCityIndex;
+    this.findProperty();
+
+  }
+
+  onSelectedProjectImageClick(selectedImageIndex: number) {
+    this.apiService.setSelectedProject(this.filteredPreconData[selectedImageIndex]);
+    this.router.navigate(['/projects/details']);
+  }
+
+  findProperty() {
+    let filteredPreconData = this.preconData;
+
+    if (this.regions.length > 0) {
+      filteredPreconData = filteredPreconData.filter(
+        (item) => this.regions.indexOf(item.Region) > -1
+      );
+    }
+
+    if (this.type.length > 0) {
+      filteredPreconData = filteredPreconData.filter(
+        (item) => this.type.indexOf(item.Type) > -1
+      );
+    }
+
+    if (this.beds.length > 0) {
+      filteredPreconData = filteredPreconData.filter((item) => {
+        const beds = item.Beds.split('|');
+        return beds.some((bed) => this.beds.indexOf(bed) > -1);
+      });
+    }
+
+    if (this.baths.length > 0) {
+      filteredPreconData = filteredPreconData.filter((item) => {
+        const baths = item.Baths.split('|');
+        return baths.some((bath) => this.beds.indexOf(bath) > -1);
+      });
+    }
+
+    if (this.selectedCityIndex > -1) {
+      filteredPreconData = filteredPreconData.filter(
+        (obj) =>
+          obj.City.toLowerCase().indexOf(
+            this.cityList[this.selectedCityIndex].toLowerCase()
+          ) > -1
+      );
+    }
+
+    this.selectedProjectImages = [];
+
+    this.filteredPreconData = filteredPreconData;
+
+    this.selectedProjectImages = filteredPreconData.map(
+      (item) => `/assets/images/${item.Project_Name}/main.png`
+    );
+
+    this.showImages = true;
 
   }
 }

@@ -58,6 +58,7 @@ export class PreconBrowserComponent implements OnInit {
   isShowChartImages: boolean = false;
   imagesList: string[] = [];
   featuredImageList: string[] = [];
+  featuredProject: PreconData[] = [];
 
   reasonsList: ReasonsList[] = [];
   userArray: User[] = [];
@@ -112,7 +113,6 @@ export class PreconBrowserComponent implements OnInit {
       .getDataCSV({ url: 'http://localhost:4200/csv/data.csv' })
       .subscribe(
         (successResponse: any) => {
-          console.log(successResponse);
           let csvToRowArray = successResponse.split('\n');
           for (let index = 1; index < csvToRowArray.length - 1; index++) {
             let row = csvToRowArray[index].split(',');
@@ -120,7 +120,6 @@ export class PreconBrowserComponent implements OnInit {
               new User(parseInt(row[0], 10), row[1], row[2].trim())
             );
           }
-          console.log(this.userArray);
         },
         (erroResponse) => {}
       );
@@ -129,7 +128,6 @@ export class PreconBrowserComponent implements OnInit {
       .getDataCSV({ url: 'http://localhost:4200/csv/precon1.csv' })
       .subscribe(
         (successResponse: any) => {
-          console.log(successResponse);
           let csvToRowArray = successResponse.split('\n');
           for (let index = 1; index < csvToRowArray.length - 1; index++) {
             let row = csvToRowArray[index].split(',');
@@ -161,11 +159,15 @@ export class PreconBrowserComponent implements OnInit {
           }
 
           this.apiService.setLocalStorage('preconData', this.preconData);
-          console.log(this.apiService.getLocalStorage('preconData'));
 
-          this.featuredImageList = this.preconData
-            .filter((obj) => obj.Featured.toLowerCase().indexOf('yes') > -1)
-            .map((item) => `/assets/images/${item.Project_Name}/main.png`);
+          //index < 9 as maximum 9 value is to be shown
+
+          this.featuredProject = this.preconData
+            .filter((obj, index) => obj.Featured.toLowerCase().indexOf('yes') > -1)
+            .slice(0, 9);
+
+          this.featuredImageList = this.featuredProject
+            .map((item) => `/assets/images/${item.Project_Name}/main.png`)
 
           let listOfProjects: PreconData[] =
             this.apiService.getLocalStorage('preconData');
@@ -225,7 +227,6 @@ export class PreconBrowserComponent implements OnInit {
   }
 
   onChartEvent(event: any, type: string) {
-    console.log('chart event:', type, event);
     alert(`${event.name} is selected`);
     let province = event.name.split('(');
     this.apiService.setFilterParams({ Province: province[0].trim() });
@@ -267,5 +268,10 @@ export class PreconBrowserComponent implements OnInit {
 
   onContactUs() {
     window.scrollTo(0, document.body.scrollHeight);
+  }
+
+  onSelectedProjectImageClick(selectedIndex: number) {
+    this.apiService.setSelectedProject(this.featuredProject[selectedIndex]);
+    this.router.navigate(['/projects/details']);
   }
 }

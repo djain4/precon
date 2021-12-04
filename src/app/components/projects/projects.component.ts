@@ -74,21 +74,21 @@ export class ProjectsComponent implements OnInit {
     this._router.navigate(['/projects/details']);
 
     this.showProjectDetails = true;
-    this.selectedProjectStation = [
-      {
-        name: project.Project_Name,
-        description: project.Project_Description,
-        lat: project.Latitude,
-        lng: project.Longitude,
-        installed: 1,
-        active: 1,
-        province: project.Region,
-        type: project.Style,
-      },
-    ];
-    this.selectedProject = project;
+    // this.selectedProjectStation = [
+    //   {
+    //     name: project.Project_Name,
+    //     description: project.Project_Description,
+    //     lat: project.Latitude,
+    //     lng: project.Longitude,
+    //     installed: 1,
+    //     active: 1,
+    //     province: project.Region,
+    //     type: project.Style,
+    //   },
+    // ];
+    // this.selectedProject = project;
 
-    this.apiService.setSelectedProjectStation(this.selectedProjectStation);
+    // this.apiService.setSelectedProjectStation(this.selectedProjectStation);
     this.apiService.setSelectedProject(this.selectedProject);
   }
 

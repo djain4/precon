@@ -35,8 +35,6 @@ export class ProjectDetailsComponent implements OnInit {
     for(let i = 1; i <= this.selectedProject.Number_of_Images; i++) {
       this.images.push(`/assets/images/${this.selectedProject.Project_Name}/${i}.png`);
     }
-    console.log(this.images);
-
     this.mainImage = `/assets/images/${this.selectedProject.Project_Name}/main.png`;
 
     this.apiService
@@ -48,7 +46,25 @@ export class ProjectDetailsComponent implements OnInit {
         (erroResponse) => {}
       );
 
-    this.selectedProjectStation = this.apiService.getSelectedProjectStation();
+    // this.selectedProjectStation = this.apiService.getSelectedProjectStation();
+
+    if(!this.selectedProjectStation) {
+      this.selectedProjectStation = [
+        {
+          name: this.selectedProject.Project_Name,
+          description: this.selectedProject.Project_Description,
+          lat: this.selectedProject.Latitude,
+          lng: this.selectedProject.Longitude,
+          installed: 1,
+          active: 1,
+          province: this.selectedProject.Region,
+          type: this.selectedProject.Style,
+        },
+      ];
+    }
+
+    // this.apiService.setSelectedProjectStation(this.selectedProjectStation);
+
   }
 
   onContactUs() {

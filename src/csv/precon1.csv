@@ -1,4 +1,10 @@
 Project_Name,Project_Description,City,Region,Latitude,Longitude,Beds,Baths,Area,Walk_Score,Bike_Score,Transportation_Score,Year,ROI,Starting_Price,Type,Style,Occupancy Date,Amenities,Number_of_Images,Featured
-ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,7,Yes
-ABD,ABD,Toronto,Ontario,43.58901434,-79.64984303,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,10,10,10,2023,20,950000,Condo,CityVibes,01/15/2023,Gym|Theatre|Party Room|BBQ|Concierge,6,Yes
-ABE,ABE,Cambridge,Ontario,43.58901434,-79.64984303,3,2,1000,6,7,6,2024,15,650000,Townhouse,Greenery,06/22/2023,Community Park|Soccer Field|School,10,Yes
+ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,5,Yes
+ABD,ABD,Toronto,Ontario,43.58901434,-79.64984303,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,10,10,10,2023,20,950000,Condo,CityVibes,01/15/2023,Gym|Theatre|Party Room|BBQ|Concierge,2,Yes
+ABE,ABE,Cambridge,Ontario,43.58901434,-79.64984303,3,2,1000,6,7,6,2024,15,650000,Townhouse,Greenery,06/22/2023,Community Park|Soccer Field|School,2,Yes
+ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,5,Yes
+ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,5,Yes
+ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,5,Yes
+ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,5,Yes
+ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,5,Yes
+ABC,ABC,Mississauga,Ontario,43.58651964,-79.64715004,1|1.5|2|2.5,1|1|2|2,600|750|950|1000,9,9,9,2022,30,750000,Condo,CityVibes,10-10-2022,Gym|Theatre|Party Room|BBQ|Concierge|Swimming Pool|Tennis Court,5,Yes

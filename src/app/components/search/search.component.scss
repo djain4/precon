@@ -3,11 +3,24 @@
 
 
 .background-base-color {
-  background: #FFF6EF;
+  background: $base-color;
 }
 
 ::ng-deep .mat-select-panel {
-  background: #FFF6EF !important;
+  background: $base-color !important;
+}
+
+.img {
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+.imageBorder {
+  border: 1px solid rgba(255, 0, 0, .05);
+}
+
+.filterOption {
+  margin-top: -3rem;
 }
 
 // .mat-grid-tile {
@@ -69,8 +82,13 @@ label {
   box-shadow: none;
   border-radius: 0px;
   border: 1px solid;
-  background: #FFF6EF;
+  background: $base-color;
   &:hover {
     @include mat-elevation(8);
+  }
+
+  &.selected {
+    background: $dark-blue;
+    color: white
   }
 }
