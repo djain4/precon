@@ -37,14 +37,17 @@ export class ProjectDetailsComponent implements OnInit {
     }
     this.mainImage = `/assets/images/${this.selectedProject.Project_Name}/main.png`;
 
-    this.apiService
-      .getData({ url: 'http://localhost:4200/json/data.json' })
-      .subscribe(
-        (successResponse: any) => {
-          this.amnitiesList = successResponse.amnitiesList;
-        },
-        (erroResponse) => {}
-      );
+    // this.apiService
+    //   .getData({ url: 'http://localhost:4200/json/data.json' })
+    //   .subscribe(
+    //     (successResponse: any) => {
+    //       this.amnitiesList = successResponse.amnitiesList;
+    //     },
+    //     (erroResponse) => {}
+    //   );
+
+    console.log(this.selectedProject.Amenities.split("|"));
+    this.amnitiesList = this.selectedProject.Amenities.split("|");
 
     // this.selectedProjectStation = this.apiService.getSelectedProjectStation();
 

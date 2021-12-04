@@ -11,5 +11,7 @@ export class WhyCanadaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onContactUs() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
 }
