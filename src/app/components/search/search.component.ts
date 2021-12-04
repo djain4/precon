@@ -83,11 +83,27 @@ export class SearchComponent implements OnInit {
 
     this.filteredPreconData = this.preconData;
 
-    this.regionsList = [... new Set(this.preconData.map(item => item.Region))];
-    this.typeList = [... new Set(this.preconData.map(item => item.Type))];
-    this.bathsList = [... new Set(this.preconData.map(item => item.Baths).join('|').split('|'))];
-    this.bedsList = [... new Set(this.preconData.map(item => item.Beds).join('|').split('|'))];
-    this.cityList =  [... new Set(this.preconData.map(item => item.City).slice(0, 8))];
+    this.regionsList = [...new Set(this.preconData.map((item) => item.Region))];
+    this.typeList = [...new Set(this.preconData.map((item) => item.Type))];
+    this.bathsList = [
+      ...new Set(
+        this.preconData
+          .map((item) => item.Baths)
+          .join('|')
+          .split('|')
+      ),
+    ];
+    this.bedsList = [
+      ...new Set(
+        this.preconData
+          .map((item) => item.Beds)
+          .join('|')
+          .split('|')
+      ),
+    ];
+    this.cityList = [
+      ...new Set(this.preconData.map((item) => item.City).slice(0, 8)),
+    ];
   }
 
   ngAfterViewInit() {
@@ -98,17 +114,22 @@ export class SearchComponent implements OnInit {
         distinctUntilChanged(),
         tap((text) => {
           this.filteredPreconData = this.input?.nativeElement.value
-            ? this.preconData.filter(
-                (item) =>
-                  item.City.toLowerCase().indexOf(
-                    this.input?.nativeElement.value.toLowerCase()
-                  ) > -1
-              ).slice(0, 8)
+            ? this.preconData
+                .filter(
+                  (item) =>
+                    item.City.toLowerCase().indexOf(
+                      this.input?.nativeElement.value.toLowerCase()
+                    ) > -1
+                )
+                .slice(0, 8)
             : this.preconData;
-            this.selectedCityIndex = -1;
+          this.selectedCityIndex = -1;
 
-          this.cityList =  [... new Set(this.filteredPreconData.map(item => item.City).slice(0, 8))];
-
+          this.cityList = [
+            ...new Set(
+              this.filteredPreconData.map((item) => item.City).slice(0, 8)
+            ),
+          ];
         })
       )
       .subscribe();
@@ -149,11 +170,12 @@ export class SearchComponent implements OnInit {
     this.showCities = true;
     this.selectedCityIndex = selectedCityIndex;
     this.findProperty();
-
   }
 
   onSelectedProjectImageClick(selectedImageIndex: number) {
-    this.apiService.setSelectedProject(this.filteredPreconData[selectedImageIndex]);
+    this.apiService.setSelectedProject(
+      this.filteredPreconData[selectedImageIndex]
+    );
     this.router.navigate(['/projects/details']);
   }
 
@@ -189,9 +211,8 @@ export class SearchComponent implements OnInit {
     if (this.selectedCityIndex > -1) {
       filteredPreconData = filteredPreconData.filter(
         (obj) =>
-          obj.City.toLowerCase().indexOf(
-            this.cityList[this.selectedCityIndex].toLowerCase()
-          ) > -1
+          obj.City.toLowerCase() ===
+          this.cityList[this.selectedCityIndex].toLowerCase()
       );
     }
 
@@ -204,6 +225,5 @@ export class SearchComponent implements OnInit {
     );
 
     this.showImages = true;
-
   }
 }
