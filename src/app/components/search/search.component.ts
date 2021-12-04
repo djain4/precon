@@ -138,7 +138,7 @@ export class SearchComponent implements OnInit {
       if (this.input?.nativeElement.value.length == 0) {
         this.showCities = false;
       }
-    }, 1000);
+    }, 200);
   }
 
   onCitySelected(city: string, selectedCityIndex: number) {

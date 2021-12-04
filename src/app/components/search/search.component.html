@@ -52,7 +52,7 @@
   </mat-grid-list>
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="lightblue">
-      <div class="container filterOption" fxLayout="row wrap" fxLayout.xs="column" *ngIf="showCities">
+      <div class="container" fxLayout="row wrap" fxLayout.xs="column" *ngIf="showCities">
         <div
           fxFlex="25%"
           *ngFor="let city of cityList; let i = index"
@@ -127,7 +127,7 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile class="imageBorder" [colspan]="3" [rowspan]="3" [style.background]="lightblue" *ngIf="showImages">
-      <div class="container filterOption">
+      <div class="container">
         <div fxLayout="row wrap" fxLayout.xs="column">
           <div fxFlex="30%" *ngFor="let imgSrc of selectedProjectImages; let i = index" style="padding-left: 10px;">
             <div style="cursor: pointer" (click)="onSelectedProjectImageClick(i)">
