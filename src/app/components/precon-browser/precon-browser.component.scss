@@ -35,6 +35,16 @@
   overflow-y: hidden;
 }
 
+.featured-max-height {
+  max-height: 750px;
+}
+
+@media only screen and (max-width: 600px) {
+  .featured-max-height {
+    max-height: 100% ;
+    height: auto;
+  }
+}
 .chart-size {
   // float: left;
   margin:0 auto;

@@ -92,3 +92,13 @@ label {
     color: white
   }
 }
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: black;
+  padding: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
