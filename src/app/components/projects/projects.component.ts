@@ -82,7 +82,7 @@ export class ProjectsComponent implements OnInit {
         lng: project.Longitude,
         installed: 1,
         active: 1,
-        province: project.Region,
+        region: project.Region,
         type: project.Style,
       },
     ];
