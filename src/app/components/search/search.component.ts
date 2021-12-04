@@ -106,6 +106,9 @@ export class SearchComponent implements OnInit {
               ).slice(0, 8)
             : this.preconData;
             this.selectedCityIndex = -1;
+
+          this.cityList =  [... new Set(this.filteredPreconData.map(item => item.City).slice(0, 8))];
+
         })
       )
       .subscribe();
