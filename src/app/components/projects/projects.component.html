@@ -56,7 +56,12 @@
         <div class="row">
           <div class="col m-b-10">
             <h6>Location</h6>
-            <p>{{project.City}} {{project.Region}}</p>
+            <p>{{project.City}}, {{project.Region}}</p>
+          </div>
+          <div class="col m-b-10">
+            <h6>Beds</h6>
+            <p *ngIf="project.Beds.split('|').length == 1">{{project.Beds}}</p>
+            <p *ngIf="project.Beds.split('|').length > 1">{{project.Beds.split("|")[0]}} - {{project.Beds.split("|")[project.Beds.split("|").length - 1]}}</p>
           </div>
         </div>
         <div class="row">
@@ -64,11 +69,21 @@
             <h6>Starting Price</h6>
             <p>CAD ${{project.Starting_Price}}</p>
           </div>
+          <div class="col m-b-10">
+            <h6>Baths</h6>
+            <p *ngIf="project.Baths.split('|').length == 1">{{project.Baths}}</p>
+            <p *ngIf="project.Baths.split('|').length > 1">{{project.Baths.split("|")[0]}} - {{project.Baths.split("|")[project.Baths.split("|").length - 1]}}</p>
+          </div>
         </div>
         <div class="row">
           <div class="col m-b-10">
             <h6>Type</h6>
-            <p>Lorem ipsum dolor sit ame</p>
+            <p>{{project.Type}}</p>
+          </div>
+          <div class="col m-b-10">
+            <h6>Area</h6>
+            <p *ngIf="project.Area.split('|').length == 1">{{project.Area}}</p>
+            <p *ngIf="project.Area.split('|').length > 1">{{project.Area.split("|")[0]}} - {{project.Area.split("|")[project.Area.split("|").length - 1]}}</p>
           </div>
         </div>
         <div class="row">
