@@ -100,12 +100,10 @@ export class SearchComponent implements OnInit {
     console.log("Sdfdsfds" + this.type);
 
     this.preconData
-      .filter(item => this.regions.indexOf(item.Province) > -1)
+      .filter(item => this.regions.indexOf(item.Region) > -1)
       .filter(item => item.Beds.split(',').filter(ef => this.regions.indexOf(ef) > -1))
       .filter(item => item.Baths.split(',').filter(ef => this.regions.indexOf(ef) > -1))
       .filter(item => this.regions.indexOf(item.Type) > -1)
-      .filter(item => this.regions.indexOf(item.Coming_Soon) > -1)
-      
 
   }
 }
