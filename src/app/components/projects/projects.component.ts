@@ -76,13 +76,13 @@ export class ProjectsComponent implements OnInit {
     this.showProjectDetails = true;
     this.selectedProjectStation = [
       {
-        id: project.UID,
         name: project.Project_Name,
+        description: project.Project_Description,
         lat: project.Latitude,
         lng: project.Longitude,
         installed: 1,
         active: 1,
-        province: project.Province,
+        province: project.Region,
         type: project.Style,
       },
     ];
