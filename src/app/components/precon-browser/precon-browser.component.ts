@@ -268,4 +268,8 @@ export class PreconBrowserComponent implements OnInit {
   onContactUs() {
     window.scrollTo(0, document.body.scrollHeight);
   }
+  
+  onFeaturedMoreClick() {
+    this.router.navigate(['/projects']);
+  }
 }
