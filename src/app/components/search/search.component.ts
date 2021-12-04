@@ -237,4 +237,8 @@ export class SearchComponent implements OnInit {
 
     this.showImages = true;
   }
+
+  onClose() {
+    this.showImages = false;
+  }
 }

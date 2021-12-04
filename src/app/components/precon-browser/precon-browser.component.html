@@ -128,7 +128,7 @@
       </div>
     </div> -->
     <div class="col-sm-6" *ngIf="isShowChartImages" id="divshow">
-      <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
+      <div style="max-height: auto;" class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
         <div fxFlex="30%" *ngFor="let itemFiltered of imagesList">
           <div><img class="img" [src]="itemFiltered"></div>
         </div>

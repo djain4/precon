@@ -127,6 +127,7 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile class="imageBorder" [colspan]="3" [rowspan]="3" [style.background]="lightblue" *ngIf="showImages">
+      <a (click)="onClose()" style="position: absolute; top: 0; right: 0; color: black;">Close X</a>
       <div class="container">
         <div fxLayout="row wrap" fxLayout.xs="column">
           <div fxFlex="30%" *ngFor="let imgSrc of selectedProjectImages; let i = index" style="padding-left: 10px;">
