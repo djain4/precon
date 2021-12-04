@@ -197,7 +197,7 @@ export class SearchComponent implements OnInit {
     this.filteredPreconData = filteredPreconData;
 
     this.selectedProjectImages = filteredPreconData.map(
-      (item) => `/assets/images/${item.Project_Name}/main.png`
+      (item) => `/assets/images/${item.Project_Name}/1.png`
     );
 
     this.showImages = true;

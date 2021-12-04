@@ -167,7 +167,7 @@ export class PreconBrowserComponent implements OnInit {
             .slice(0, 9);
 
           this.featuredImageList = this.featuredProject
-            .map((item) => `/assets/images/${item.Project_Name}/main.png`)
+            .map((item) => `/assets/images/${item.Project_Name}/1.png`)
 
           let listOfProjects: PreconData[] =
             this.apiService.getLocalStorage('preconData');

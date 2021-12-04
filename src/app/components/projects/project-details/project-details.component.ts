@@ -35,7 +35,7 @@ export class ProjectDetailsComponent implements OnInit {
     for(let i = 1; i <= this.selectedProject.Number_of_Images; i++) {
       this.images.push(`/assets/images/${this.selectedProject.Project_Name}/${i}.png`);
     }
-    this.mainImage = `/assets/images/${this.selectedProject.Project_Name}/main.png`;
+    this.mainImage = `/assets/images/${this.selectedProject.Project_Name}/1.png`;
 
     // this.apiService
     //   .getData({ url: 'http://localhost:4200/json/data.json' })
