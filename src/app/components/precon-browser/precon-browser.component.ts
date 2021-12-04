@@ -91,14 +91,14 @@ export class PreconBrowserComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.apiService
-      .getData({ url: 'http://localhost:4200/json/images.json' })
-      .subscribe(
-        (successResponse: any) => {
-          this.imagesList = successResponse.imagesList;
-        },
-        (erroResponse) => {}
-      );
+    // this.apiService
+    //   .getData({ url: 'http://localhost:4200/json/images.json' })
+    //   .subscribe(
+    //     (successResponse: any) => {
+    //       this.imagesList = successResponse.imagesList;
+    //     },
+    //     (erroResponse) => {}
+    //   );
 
     this.apiService
       .getData({ url: 'http://localhost:4200/json/data.json' })
@@ -163,11 +163,18 @@ export class PreconBrowserComponent implements OnInit {
           //index < 9 as maximum 9 value is to be shown
 
           this.featuredProject = this.preconData
-            .filter((obj, index) => obj.Featured.toLowerCase().indexOf('yes') > -1)
+            .filter(
+              (obj, index) => obj.Featured.toLowerCase().indexOf('yes') > -1
+            )
             .slice(0, 9);
 
-          this.featuredImageList = this.featuredProject
-            .map((item) => `/assets/images/${item.Project_Name}/1.png`)
+          this.imagesList = this.preconData.map(
+            (item) => `/assets/images/${item.Project_Name}/1.png`
+          );
+
+          this.featuredImageList = this.featuredProject.map(
+            (item) => `/assets/images/${item.Project_Name}/1.png`
+          );
 
           let listOfProjects: PreconData[] =
             this.apiService.getLocalStorage('preconData');
@@ -178,7 +185,7 @@ export class PreconBrowserComponent implements OnInit {
               regionProjectCount[project.Region] = 1;
             } else {
               regionProjectCount[project.Region] =
-              regionProjectCount[project.Region] + 1;
+                regionProjectCount[project.Region] + 1;
             }
           });
 
@@ -187,7 +194,7 @@ export class PreconBrowserComponent implements OnInit {
           _canadajson.features.forEach((obj: any, index: any) => {
             if (regionProjectCount[obj.properties.name] != null) {
               _canadajson.features[index].properties.name =
-              _canadajson.features[index].properties.name +
+                _canadajson.features[index].properties.name +
                 ' ( ' +
                 regionProjectCount[obj.properties.name] +
                 ' ) ';
@@ -274,7 +281,7 @@ export class PreconBrowserComponent implements OnInit {
     this.apiService.setSelectedProject(this.featuredProject[selectedIndex]);
     this.router.navigate(['/projects/details']);
   }
-  
+
   onFeaturedMoreClick() {
     this.router.navigate(['/projects']);
   }

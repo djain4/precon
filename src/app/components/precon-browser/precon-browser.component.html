@@ -26,78 +26,12 @@
       <div class="container">
         <div class="post-list animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
           <div fxFlex="40%" *ngFor="let itemFiltered of imagesList; let i = index" class="animate animate-{{i}}">
-            <div>
+            <div style="cursor: pointer;">
               <img class="img" [src]="itemFiltered" />
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="empty-box"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </section>
@@ -111,7 +45,7 @@
   <div class="container" style="max-height: 750px;">
     <div class="animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
       <div fxFlex="30%" *ngFor="let itemFiltered of featuredImageList; let i = index" class="animate animate-{{i}}">
-        <div (click)="onSelectedProjectImageClick(i)">
+        <div (click)="onSelectedProjectImageClick(i)" style="cursor: pointer;">
           <img class="img" [src]="itemFiltered" />
         </div>
       </div>
