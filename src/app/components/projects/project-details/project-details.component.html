@@ -17,15 +17,19 @@
         <div class="col m-b-10">
           <h4>{{ selectedProject.Project_Name }}</h4>
           <p>
-            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum
-            dolor sit amet, Lorem ipsum dolor sit amet.
+            {{ selectedProject.Project_Description }}
           </p>
         </div>
       </div>
       <div class="row">
-        <div class="col m-b-10">
+        <div class="col-sm-6" style="line-height: 1.2rem;">
           <h6>Location</h6>
-          <p>Lorem ipsum dolor sit ame</p>
+          <p>{{selectedProject.City}}, {{selectedProject.Region}}</p>
+        </div>
+        <div class="col-sm-6" style="line-height: 1.2rem;">
+          <h6>Beds</h6>
+          <p *ngIf="selectedProject.Beds.split('|').length == 1">{{selectedProject.Beds}}</p>
+          <p *ngIf="selectedProject.Beds.split('|').length > 1">{{selectedProject.Beds.split("|")[0]}} - {{selectedProject.Beds.split("|")[selectedProject.Beds.split("|").length - 1]}}</p>
         </div>
       </div>
       <div class="row">
@@ -33,21 +37,32 @@
           <h6>Starting Price</h6>
           <p>CAD ${{ selectedProject.Starting_Price }}</p>
         </div>
+        <div class="col-sm-6" style="line-height: 1.2rem;">
+          <h6>Baths</h6>
+          <p *ngIf="selectedProject.Baths.split('|').length == 1">{{selectedProject.Baths}}</p>
+          <p *ngIf="selectedProject.Baths.split('|').length > 1">{{selectedProject.Baths.split("|")[0]}} - {{selectedProject.Baths.split("|")[selectedProject.Baths.split("|").length - 1]}}</p>
+        </div>
       </div>
       <div class="row">
         <div class="col m-b-10">
           <h6>Type</h6>
-          <p>Lorem ipsum dolor sit ame</p>
+          <p>{{selectedProject.Type}}</p>
+        </div>
+        <div class="col-sm-6" style="line-height: 1.2rem;">
+          <h6>Area</h6>
+          <p *ngIf="selectedProject.Area.split('|').length == 1">{{selectedProject.Area}}</p>
+          <p *ngIf="selectedProject.Area.split('|').length > 1">{{selectedProject.Area.split("|")[0]}} - {{selectedProject.Area.split("|")[selectedProject.Area.split("|").length - 1]}}</p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6" style="line-height: 1.2rem;">
-          <h6 style="float: left">Style</h6>
-          <span style="padding-left:2rem"> Lorem ipsum dolor sit ame </span>
+          <h6 style="float: left;padding-top: 0.6rem;">Style</h6>
+          <span style="padding-left:1rem;"> <img src="/assets/images/{{selectedProject.Style}}.png" style="width:25px; height:30px;"/> </span>
         </div>
         <div class="col-sm-6" style="line-height: 1.2rem;">
-          <h6 style="float: left">Developer</h6>
-          <span style="padding-left:2rem">Lorem ipsum dolor sit ame</span>
+          <h6 style="float: left;padding-top: 0.6rem;">Occupancy Date</h6>
+          <!-- <span style="padding-left:1rem; padding-top: 8px;">{{selectedProject.Occupancy_Date}}</span> -->
+          <span style="float: left; padding: 1rem; padding-top: .6rem;">{{selectedProject.Occupancy_Date}}</span>
         </div>
       </div>
     </div>
@@ -108,7 +123,7 @@
   <div>
     <div style="margin-top: 2rem">
       <div style="margin: 2rem">
-        <h6>Aminities</h6>
+        <h6>Amenities</h6>
       </div>
       <div
         class="container"
