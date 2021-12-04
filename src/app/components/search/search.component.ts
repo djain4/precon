@@ -87,7 +87,7 @@ export class SearchComponent implements OnInit {
     this.typeList = [... new Set(this.preconData.map(item => item.Type))];
     this.bathsList = [... new Set(this.preconData.map(item => item.Baths).join('|').split('|'))];
     this.bedsList = [... new Set(this.preconData.map(item => item.Beds).join('|').split('|'))];
-    this.cityList =  [... new Set(this.preconData.map(item => item.City))];
+    this.cityList =  [... new Set(this.preconData.map(item => item.City).slice(0, 8))];
   }
 
   ngAfterViewInit() {
