@@ -11,5 +11,7 @@ export class WhyPreconstructionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onContactUs() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
 }
