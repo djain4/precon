@@ -169,25 +169,25 @@ export class PreconBrowserComponent implements OnInit {
 
           let listOfProjects: PreconData[] =
             this.apiService.getLocalStorage('preconData');
-          let provinceProjectCount: any = {};
+          let regionProjectCount: any = {};
 
           listOfProjects.forEach((project) => {
-            if (provinceProjectCount[project.Region] == null) {
-              provinceProjectCount[project.Region] = 1;
+            if (regionProjectCount[project.Region] == null) {
+              regionProjectCount[project.Region] = 1;
             } else {
-              provinceProjectCount[project.Region] =
-                provinceProjectCount[project.Region] + 1;
+              regionProjectCount[project.Region] =
+              regionProjectCount[project.Region] + 1;
             }
           });
 
           let _canadajson: any = canadajson;
 
           _canadajson.features.forEach((obj: any, index: any) => {
-            if (provinceProjectCount[obj.properties.name] != null) {
+            if (regionProjectCount[obj.properties.name] != null) {
               _canadajson.features[index].properties.name =
               _canadajson.features[index].properties.name +
                 ' ( ' +
-                provinceProjectCount[obj.properties.name] +
+                regionProjectCount[obj.properties.name] +
                 ' ) ';
             }
           });
@@ -227,8 +227,8 @@ export class PreconBrowserComponent implements OnInit {
   onChartEvent(event: any, type: string) {
     console.log('chart event:', type, event);
     alert(`${event.name} is selected`);
-    let province = event.name.split('(');
-    this.apiService.setFilterParams({ Province: province[0].trim() });
+    let region = event.name.split('(');
+    this.apiService.setFilterParams({ Region: region[0].trim() });
     this.router.navigate(['/projects']);
   }
 
