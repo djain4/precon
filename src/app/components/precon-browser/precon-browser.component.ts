@@ -66,7 +66,13 @@ export class PreconBrowserComponent implements OnInit {
   userArray: User[] = [];
   preconData: PreconData[] = [];
 
-  xAxisData = ['2021', '2022', '2023', '2024', '2025'];
+  xAxisData = [
+    new Date().getFullYear() + 1,
+    new Date().getFullYear() + 2,
+    new Date().getFullYear() + 3,
+    new Date().getFullYear() + 4,
+    new Date().getFullYear() + 5,
+  ];
   yAxisData = [10, 15, 25, 30, 40];
 
   mapChartOption: any;
@@ -280,7 +286,7 @@ export class PreconBrowserComponent implements OnInit {
         .filter((item) => parseInt(item.ROI) >= this.yAxisData[event.dataIndex])
         .filter(
           (item) =>
-            parseInt(item.Year) <= parseInt(this.xAxisData[event.dataIndex])
+            parseInt(item.Year) <= this.xAxisData[event.dataIndex]
         );
 
       this.roiImageList = this.filteredROIList.map(
