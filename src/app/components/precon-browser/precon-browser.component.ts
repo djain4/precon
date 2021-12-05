@@ -59,10 +59,15 @@ export class PreconBrowserComponent implements OnInit {
   imagesList: string[] = [];
   featuredImageList: string[] = [];
   featuredProject: PreconData[] = [];
+  roiImageList: string[] = [];
+  filteredROIList: PreconData[] = [];
 
   reasonsList: ReasonsList[] = [];
   userArray: User[] = [];
   preconData: PreconData[] = [];
+
+  xAxisData = ['2021', '2022', '2023', '2024', '2025'];
+  yAxisData = [10, 15, 25, 30, 40];
 
   mapChartOption: any;
   chartOption: any = {
@@ -70,7 +75,7 @@ export class PreconBrowserComponent implements OnInit {
     xAxis: {
       name: 'YEAR',
       type: 'category',
-      data: ['2021', '2022', '2023', '2024', '2025'],
+      data: this.xAxisData,
     },
     yAxis: {
       name: 'ROI',
@@ -81,7 +86,7 @@ export class PreconBrowserComponent implements OnInit {
     },
     series: [
       {
-        data: [10, 15, 25, 30, 40],
+        data: this.yAxisData,
         type: 'line',
         smooth: true,
       },
@@ -240,7 +245,7 @@ export class PreconBrowserComponent implements OnInit {
   }
 
   async onChartClick(event: any) {
-    // console.log('chart event:', event);
+    console.log('chart event:', event);
     // alert(`${event.name} is selected`);
     if (event.name == this.previousEvent) {
       this.isChart1Animate = !this.isChart1Animate;
@@ -265,6 +270,28 @@ export class PreconBrowserComponent implements OnInit {
       // this.isShowChart2 = true;
       this.previousEvent = event.name;
     }
+
+    this.showFilteredROIData(event);
+  }
+
+  showFilteredROIData(event: any) {
+    if (event && event.dataIndex > -1) {
+      this.filteredROIList = this.preconData
+        .filter((item) => parseInt(item.ROI) >= this.yAxisData[event.dataIndex])
+        .filter(
+          (item) =>
+            parseInt(item.Year) <= parseInt(this.xAxisData[event.dataIndex])
+        );
+
+      this.roiImageList = this.filteredROIList.map(
+        (item) => `/assets/images/${item.Project_Name}/1.png`
+      );
+    }
+  }
+
+  onROIImageSelected(selectedIndex: number) {
+    this.apiService.setSelectedProject(this.filteredROIList[selectedIndex]);
+    this.router.navigate(['/projects/details']);
   }
 
   setLifestyle(style: any) {

@@ -7,10 +7,9 @@
         <div class="card-body">
           <h3>
             Access The Latest
-            <br>Preconstruction
-            <br>Projects In CANADA
+            <br />Preconstruction <br />Projects In CANADA
           </h3>
-          <div style="margin: 0 0 1rem;">
+          <div style="margin: 0 0 1rem">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -22,10 +21,20 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6 h-100  order-1 order-md-2">
+    <div class="col-sm-6 h-100 order-1 order-md-2">
       <div class="container">
-        <div class="post-list animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
-          <div fxFlex="40%" *ngFor="let itemFiltered of imagesList; let i = index" class="animate animate-{{i}}">
+        <div
+          class="post-list animation-wrapper"
+          fxLayout="row wrap"
+          fxLayout.xs="column"
+          fxLayoutGap="0.5%"
+          fxLayoutAlign="left"
+        >
+          <div
+            fxFlex="40%"
+            *ngFor="let itemFiltered of imagesList; let i = index"
+            class="animate animate-{{ i }}"
+          >
             <div>
               <img class="img" [src]="itemFiltered" />
             </div>
@@ -39,30 +48,56 @@
   <h1>FEATURED</h1>
   <div>
     <h5>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinciduntut laoreet dolore
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+      nibh euismod tinciduntut laoreet dolore
     </h5>
   </div>
   <div class="container featured-max-height">
-    <div class="animation-wrapper" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
-      <div fxFlex="30%" *ngFor="let itemFiltered of featuredImageList; let i = index" class="animate animate-{{i}}">
-        <div (click)="onSelectedProjectImageClick(i)" style="cursor: pointer;">
+    <div
+      class="animation-wrapper"
+      fxLayout="row wrap"
+      fxLayout.xs="column"
+      fxLayoutGap="0.5%"
+      fxLayoutAlign="left"
+    >
+      <div
+        fxFlex="30%"
+        *ngFor="let itemFiltered of featuredImageList; let i = index"
+        class="animate animate-{{ i }}"
+      >
+        <div (click)="onSelectedProjectImageClick(i)" style="cursor: pointer">
           <img class="img" [src]="itemFiltered" />
         </div>
       </div>
     </div>
   </div>
-  <div style="margin: 2rem; text-align: center;">
+  <div style="margin: 2rem; text-align: center">
     <button (click)="onFeaturedMoreClick()">More</button>
   </div>
 </section>
 <section class="section">
   <h1>PREFERRED LOCATION</h1>
-  <div echarts [options]="mapChartOption" class="demo-chart" (chartClick)="onChartEvent($event, 'chartClick')"></div>
+  <div
+    echarts
+    [options]="mapChartOption"
+    class="demo-chart"
+    (chartClick)="onChartEvent($event, 'chartClick')"
+  ></div>
   <precon-search class="precon-search"></precon-search>
   <h2 class="center-text">Reasons WHY CANADA</h2>
   <div>
-    <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="2%" fxLayoutAlign="left">
-      <div fxFlex="30%" *ngFor="let itemFiltered of reasonsList" style="padding-bottom: 2%">
+    <div
+      class="container"
+      fxLayout="row wrap"
+      fxLayout.xs="column"
+      fxLayoutGap="2%"
+      fxLayoutAlign="left"
+    >
+      <div
+        fxFlex="30%"
+        *ngFor="let itemFiltered of reasonsList"
+        style="padding-bottom: 2%"
+      >
         <div>
           <div class="sub-header">{{ itemFiltered.header }}</div>
           <div class="center-text">{{ itemFiltered.description }}</div>
@@ -75,63 +110,67 @@
   <h1>PREFERRED LIFESTYLE</h1>
   <div class="row">
     <div class="col-sm-6" (click)="setLifestyle('CityVibes')">
-      <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/R926LU1YEA.jpg" alt="CityVibes"
-        style="width:100%; cursor: pointer">
-        <span class="image-text-center">
-          CITY VIBES
-        </span>
+      <img
+        src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/R926LU1YEA.jpg"
+        alt="CityVibes"
+        style="width: 100%; cursor: pointer"
+      />
+      <span class="image-text-center"> CITY VIBES </span>
     </div>
     <div class="col-sm-6" (click)="setLifestyle('Greenery')">
-      <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/U9PP3KXXY2.jpg" alt="Greenery"
-        style="width:100%; cursor: pointer">
-        <span class="image-text-center">
-          GREEENERY
-        </span>
+      <img
+        src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/U9PP3KXXY2.jpg"
+        alt="Greenery"
+        style="width: 100%; cursor: pointer"
+      />
+      <span class="image-text-center"> GREEENERY </span>
     </div>
   </div>
 </section>
 <section class="section">
   <h1>PREFERRED ROI</h1>
   <div>
-    <h4>
-      INVEST IN THE HIGHEST QUALITY OPPORTUNITIES
-    </h4>
+    <h4>INVEST IN THE HIGHEST QUALITY OPPORTUNITIES</h4>
   </div>
   <div>
     <h5>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinciduntut laoreet dolore
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+      nibh euismod tinciduntut laoreet dolore
     </h5>
   </div>
-  <!-- <div id="chart1" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
-    <div class="chart-size">
-      <div id="roiChart" echarts [@slideChart1]="isChart1Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
-        class="demo-chart"></div>
-    </div>
-  </div> -->
   <div class="row">
-    <!-- <div id="chart1" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
+    <div
+      id="chart1"
+      *ngIf="isShowChart1"
+      class="col-sm-6"
+      style="margin: 0 auto"
+    >
       <div class="chart-size">
-        <div id="roiChart" echarts [@slideChart1]="isChart1Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
-          class="demo-chart"></div>
-      </div>
-    </div> -->
-    <div id="chart1" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
-      <div class="chart-size">
-        <div id="roiChart" echarts [@slideChart1]="isChart1Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
-          class="demo-chart"></div>
+        <div
+          id="roiChart"
+          echarts
+          [@slideChart1]="isChart1Animate ? true : false"
+          [options]="chartOption"
+          (chartClick)="onChartClick($event)"
+          class="demo-chart"
+        ></div>
       </div>
     </div>
-    <!-- <div id="chart2" *ngIf="isShowChart1" class="col-sm-6" style="margin:0 auto;">
-      <div class="chart-size">
-        <div echarts [@slideChart2]="isChart1Animate ? true : false" [options]="chartOption" (chartClick)="onChartClick($event)"
-          class="demo-chart"></div>
-      </div>
-    </div> -->
     <div class="col-sm-6" *ngIf="isShowChartImages" id="divshow">
-      <div style="max-height: auto !important;">
-        <div  fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="left">
-          <div fxFlex="30%" *ngFor="let itemFiltered of imagesList">
-            <div><img class="img" [src]="itemFiltered"></div>
+      <div style="max-height: auto !important">
+        <div
+          fxLayout="row wrap"
+          fxLayout.xs="column"
+          fxLayoutGap="0.5%"
+          fxLayoutAlign="left"
+        >
+          <div
+            fxFlex="30%"
+            *ngFor="let itemFiltered of roiImageList; let i = index"
+          >
+            <div (click)="onROIImageSelected(i)" style="cursor: pointer">
+              <img class="img" [src]="itemFiltered" />
+            </div>
           </div>
         </div>
       </div>
